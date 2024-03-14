@@ -1,18 +1,17 @@
-import './App.css'
-import Message from './components/chatMessage';
-import ChatHeader from './components/chatHeader';
-import ChatFooter from './components/chatFooter';
-function App() {
 
+import { useState } from "react";
+
+import "./App.css";
+import Search from "./Components/Search/Search";
+function App() {
   return (
-    
-   <div className='bg-white h-screen w-3/4 ms-auto'>
-    <ChatHeader/>
-    <Message/>
-    <Message/>
-    <ChatFooter/>
-   </div>
-  )
+
+    <div>
+      <h1 className="text-3xl font-bold underline">Hello at our ChatNook</h1>
+      <Search />
+    </div>
+  );
+
 }
 
-export default App
+export default App;

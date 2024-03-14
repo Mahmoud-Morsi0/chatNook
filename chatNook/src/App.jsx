@@ -1,16 +1,10 @@
 
-import { useState } from "react";
-
 import "./App.css";
-
-
 function App() {
   return (
-
-    <div>
+    <div className=" h-screen bg-white">
     </div>
   );
-
 }
 
 export default App;

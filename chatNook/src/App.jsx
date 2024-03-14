@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import './App.css'
+import Message from './components/Message'
+import Register from './components/Register Button'
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
      <h1 className="text-3xl font-bold underline">
       Hello at our ChatNook
     </h1>
+    <Message/>
+    <Register/>
    </div>
   )
 }

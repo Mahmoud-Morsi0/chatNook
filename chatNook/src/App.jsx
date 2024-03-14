@@ -1,17 +1,12 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Router from "./router/Router";
 
-import './App.css'
+import "./App.css";
+import Login from "./pages/login/Login";
+import Registration from "./pages/registration/Registration";
 
 function App() {
-
-  return (
-    
-   <div>
-     <h1 className="text-3xl font-bold underline">
-      Hello at our ChatNook
-    </h1>
-   </div>
-  )
+  return <></>;
 }
 
-export default App
+export default App;

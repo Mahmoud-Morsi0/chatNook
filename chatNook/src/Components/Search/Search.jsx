@@ -2,13 +2,13 @@ import React from "react";
 
 export default function Search() {
   return (
-    <div className="w-80 my-4 mx-4">
+    <div className="w-80 my-4 mx-4 sm:w-64">
       <label className="input input-bordered flex items-center gap-2 rounded-full drop-shadow-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           fill="currentColor"
-          className="w-6 h-6 opacity-100 search-icon "
+          className="w-6  opacity-100 search-icon "
         >
           <path
             fillRule="evenodd"

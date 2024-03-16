@@ -2,10 +2,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Pages
-import Home from "../pages/home/Home";
-import Registration from "./../pages/registration/registration";
-import Login from './../pages/login/login';
-import LandingPage from "./../pages/LandingPage";
+import Home from "../pages/Home/Home";
+import Registration from "../pages/Registration/Registration";
+import Login from '../pages/login/Login';
+import LandingPage from "../pages/LandingPage";
 
 export default function Router() {
   return (

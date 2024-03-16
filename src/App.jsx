@@ -1,6 +1,6 @@
 
 import "./App.css";
-import Router from './router/Router';
+import Router from "./Router";
 
 function App() {
   return (

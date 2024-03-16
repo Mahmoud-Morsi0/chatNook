@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function LandingPage() {
   return (
     <>
-      <div className="flex items-center justify-between ">
+      <div className="flex items-center justify-between container ms-auto">
         <Logo></Logo>
         <div className="w-1/40 mr-44">
           <Link to="/login">
@@ -23,7 +23,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="flex items-center justify-around mt-20">
+      <div className="flex items-center justify-around mt-20 container ms-auto">
         <div className="flex flex-col w-1/3 ">
           <h1 className="text-5xl font-bold leading-relaxed">
             Connect friends easily <span className="text-cyan-800">&</span>{" "}

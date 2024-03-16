@@ -33,7 +33,7 @@ const [name, setName] = useState("");
         type="text"
         name="Name"
         id="Name"
-value={name}
+        value={name}
         onChange={handleNameChange}
         className="block w-1/6  h-10 rounded-md ml-3 mt-2 mb-6 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
       />

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Pages
 import Home from "../pages/home/Home";
-import Registration from "./../pages/registration/Registration";
+import Registration from "./../pages/registration/registration";
 import Login from './../pages/login/login';
 import LandingPage from "./../pages/LandingPage/LandingPage";
 
@@ -12,10 +12,10 @@ export default function Router() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/landing-page" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
     </>

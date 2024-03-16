@@ -4,7 +4,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
-    sm: { min: "640px", max: "767px" },
+    sm: { min: "200px", max: "550px" },
     // => @media (min-width: 640px and max-width: 767px) { ... }
 
     md: { min: "768px", max: "1023px" },

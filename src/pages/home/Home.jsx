@@ -8,6 +8,17 @@ import { useState } from "react";
 import Message from "../../components/Message";
 
 export default function Home() {
+
+  const date = new Date();
+  const datetext = date.getHours() + ":" + date.getMinutes();
+  console.log(datetext);
+  let [userProfile, setUserProfile] = useState(false);
+  const getUserProfile = () => {
+    userProfile=!userProfile;
+    setUserProfile(userProfile);
+    console.log("user profile");
+  };
+  
   const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
     userName: "Morsi",
@@ -80,15 +91,7 @@ export default function Home() {
       status: "bending",
     },
   ];
-  const date = new Date();
-  const datetext = date.getHours() + ":" + date.getMinutes();
-  console.log(datetext);
-  let [userProfile, setUserProfile] = useState(false);
-  const getUserProfile = () => {
-    userProfile=!userProfile;
-    setUserProfile(userProfile);
-    console.log("user profile");
-  };
+
 
   return (
     <div className="flex justify-center ">

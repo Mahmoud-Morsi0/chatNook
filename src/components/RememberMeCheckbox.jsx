@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function RememberMeCheckbox() {
   const [isChecked, setIsChecked] = useState(false);
@@ -8,12 +8,12 @@ function RememberMeCheckbox() {
   };
 
   return (
-    <label>
+    <label className=" text-gray-600">
       <input
         type="checkbox"
         checked={isChecked}
         onChange={handleCheckboxChange}
-        className="mr-2"
+        className="ms-3 mt-2"
       />
       Remember Me
     </label>

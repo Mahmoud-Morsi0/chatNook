@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Registration from "./../pages/registration/registration";
 import Login from './../pages/login/login';
-import LandingPage from "./../pages/LandingPage/LandingPage";
+import LandingPage from "./../pages/LandingPage";
 
 export default function Router() {
   return (

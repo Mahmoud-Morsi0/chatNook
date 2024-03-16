@@ -1,27 +1,17 @@
+<<<<<<< HEAD
 // import React from "react";
 import Button from "@mui/material/Button";
 import { cyan } from "@mui/material/colors";
+=======
+import React from "react";
+>>>>>>> 8abf8d0ccae671ed37cdadd8ff9634ad7740be3f
 
 export default function RegisterButton() {
   return (
     <>
-      <Button
-        variant="contained"
-        sx={{
-          backgroundColor: "#1E7887",
-          width: "220px",
-          height: "48px",
-          fontWeight: "bold",
-          marginLeft: "10px",
-          marginTop: "20px",
-          "&:hover": {
-            backgroundColor: cyan[800],
-            boxShadow: "none",
-          },
-        }}
-      >
+      <button className="text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12  font-medium hover:bg-white hover:text-cyan-800 mx-4">
         Sign Up
-      </Button>
+      </button>
     </>
   );
 }

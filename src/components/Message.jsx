@@ -6,8 +6,8 @@ const Message = () => {
     
   return (
     <>
-    <div className=' flex flex-col justify-start border border-[#1e77872c] h-screen '>
-        <div>
+    <div className='container flex flex-col justify-start border border-[#1e77872c] h-screen '>
+        <div className=''>
             <Logo />
         </div>
         

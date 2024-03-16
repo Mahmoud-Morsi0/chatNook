@@ -92,7 +92,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center ">
-      <div className="w-3/12 h-screen ">
+      <div className="md:w-3/12 h-screen  sm:hidden md:inline-block">
         {userProfile ? 
         <UserProfile /> 
         : <Message 
@@ -100,10 +100,11 @@ export default function Home() {
            />}
       </div>
       <div 
-      className=" w-9/12  flex flex-col justify-between"
+      className="md:w-9/12  sm:w-screen   flex flex-col justify-between"
       >
         <div>
           <ChatHeader 
+          user={message}
           currentUser={currentUser}
           getUserProfile={getUserProfile}
            />

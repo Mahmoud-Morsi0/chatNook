@@ -20,7 +20,7 @@ import { useState } from "react";
         name="search"
         id="search"
         placeholder=' Search... '
-        className=" h-10 rounded-full my-6 ml-3 py-1 pl-4 pr-20 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
+        className=" h-9 rounded-full my-6 ml-3 py-1 pl-4 pr-20 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
         onChange={handelSearch}
         value={searchValue}
       />

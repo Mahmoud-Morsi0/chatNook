@@ -4,7 +4,7 @@ import label from "@mui/material/InputLabel";
 import { cyan } from "@mui/material/colors";
 
 export default function LoginInputs() {
-  const [email, setEmail] = useState("");
+const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
@@ -20,7 +20,7 @@ export default function LoginInputs() {
   return (
     <>
       <label
-        for="Email"
+        htmlFor="Email"
         className=" input block text-sm ml-3 font-medium leading-6 text-gray-900"
       >
         Email
@@ -34,7 +34,7 @@ export default function LoginInputs() {
         className="block w-1/6  h-10 rounded-md mb-6 ml-3 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
       />
       <label
-        for="Password"
+        htmlFor="Password"
         className=" input block text-sm ml-3 font-medium leading-6 text-gray-900"
       >
         Password

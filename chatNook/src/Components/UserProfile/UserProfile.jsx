@@ -1,8 +1,10 @@
 import React from "react";
 
+import { CiLogout } from "react-icons/ci";
+
 export default function UserProfile() {
   return (
-    <div className="w-1/4 h-screen flex flex-col justify-between ">
+    <div className="p-3 border border-[#1e77872c] h-screen flex flex-col justify-between text-black">
       <div>
         <div className="flex flex-col items-center ">
           <div className="avatar online mt-8 mb-2">
@@ -33,8 +35,10 @@ export default function UserProfile() {
           <p className="capitalize">Eman Elsayed@Yahoo.com</p>
         </div>
       </div>
-      <div className="mx-6 mb-8">
+      <div className="w-9/12 mx-6 mb-8 flex justify-between align-middle">
         <p className="font-bold">logout</p>
+        <CiLogout className="text-xl" />
+
       </div>
     </div>
   );

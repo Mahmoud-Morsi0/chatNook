@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Pages
 import Home from "../pages/home/Home";
-import Login from "./../pages/login/Login";
 import Registration from "./../pages/registration/Registration";
+import Login from './../pages/login/login';
 
 export default function Router() {
   return (
@@ -12,7 +12,7 @@ export default function Router() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Registration />} />
         </Routes>
       </BrowserRouter>

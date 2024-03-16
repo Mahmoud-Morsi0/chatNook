@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function SignupInputs() {
-  const [name, setName] = useState("");
+  
+const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,11 +20,11 @@ export default function SignupInputs() {
     setPassword(e.target.value);
     // console.log(password);
   };
-
+  
   return (
     <>
       <label
-        for="Name"
+        htmlFor="Name"
         className="block text-sm ml-3 font-medium leading-6 text-gray-900"
       >
         Full Name
@@ -32,12 +33,12 @@ export default function SignupInputs() {
         type="text"
         name="Name"
         id="Name"
-        value={name}
+value={name}
         onChange={handleNameChange}
         className="block w-1/6  h-10 rounded-md ml-3 mt-2 mb-6 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
       />
       <label
-        for="Email"
+        htmlFor="Email"
         className=" input block text-sm ml-3 font-medium leading-6 text-gray-900"
       >
         Email
@@ -51,7 +52,7 @@ export default function SignupInputs() {
         className="block w-1/6  h-10 rounded-md mb-6 ml-3 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 "
       />
       <label
-        for="Password"
+        htmlFor="Password"
         className=" input block text-sm ml-3 font-medium leading-6 text-gray-900"
       >
         Password

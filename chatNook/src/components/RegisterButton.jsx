@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 // import React from "react";
-import Button from "@mui/material/Button";
-import { cyan } from "@mui/material/colors";
-=======
-import React from "react";
->>>>>>> 8abf8d0ccae671ed37cdadd8ff9634ad7740be3f
 
 export default function RegisterButton() {
   return (

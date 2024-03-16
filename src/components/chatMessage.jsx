@@ -2,7 +2,7 @@
 import { IoCheckmark } from "react-icons/io5";
 import { IoCheckmarkDone } from "react-icons/io5";
 
-const ChatMessage = ({currentUser,message}) => {
+const ChatMessage = ({CURRENT_USER,message}) => {
 
   return (
 
@@ -11,7 +11,7 @@ const ChatMessage = ({currentUser,message}) => {
         return( <div
         key={message}
          className={`chat ${
-           message.userId === currentUser.userId ? "chat-end" : "chat-start"
+           message.userId === CURRENT_USER.userId ? "chat-end" : "chat-start"
          }`}
        >
          <div className="chat-image avatar">
@@ -21,12 +21,12 @@ const ChatMessage = ({currentUser,message}) => {
          </div>
          <div
            className={`chat-bubble max-w-xl  ${
-             message.userId === currentUser.userId ? " bg-neutral-100  text-black": "bg-[#1e7887] text-white"
+             message.userId === CURRENT_USER.userId ? " bg-neutral-100  text-black": "bg-[#1e7887] text-white"
            } `}
          >
            <div
              className={`text-xs ${
-               message.userId === currentUser.userId? "text-orange-600": " text-orange-400"
+               message.userId === CURRENT_USER.userId? "text-orange-600": " text-orange-400"
              } `}
            >
              {message.name}

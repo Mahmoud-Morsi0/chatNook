@@ -1,20 +1,31 @@
 // import React from "react";
 
 import UserProfile from "../../components/UserProfile";
-import ChatHeader from "./../../components/chatHeader";
-import ChatFooter from "./../../components/chatFooter";
-import ChatMessage from "../../components/chatMessage";
+import ChatHeader from "../../components/ChatHeader";
+import ChatFooter from "../../components/ChatFooter";
+import ChatMessage from "../../components/ChatMessage";
 import { useState } from "react";
 import Message from "../../components/Message";
 
 export default function Home() {
-  const currentUser = {
+
+  const date = new Date();
+  const datetext = date.getHours() + ":" + date.getMinutes();
+  console.log(datetext);
+  let [userProfile, setUserProfile] = useState(false);
+  const getUserProfile = () => {
+    userProfile=!userProfile;
+    setUserProfile(userProfile);
+    console.log("user profile");
+  };
+  
+  const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
     userName: "Morsi",
     userId: 1,
     status:'Active'
   };
-  const allUsers=[
+  const ALL_USERS=[
     {
       avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
       userName: "Emo",
@@ -46,7 +57,7 @@ export default function Home() {
       status:''
     },
   ]
-  const message = [
+  const MESSAGE = [
     {
       userId: 2,
       name: "ChatNook",
@@ -80,15 +91,7 @@ export default function Home() {
       status: "bending",
     },
   ];
-  const date = new Date();
-  const datetext = date.getHours() + ":" + date.getMinutes();
-  console.log(datetext);
-  let [userProfile, setUserProfile] = useState(false);
-  const getUserProfile = () => {
-    userProfile=!userProfile;
-    setUserProfile(userProfile);
-    console.log("user profile");
-  };
+
 
   return (
     <div className="flex justify-center ">
@@ -96,7 +99,7 @@ export default function Home() {
         {userProfile ? 
         <UserProfile /> 
         : <Message 
-        allUsers={allUsers}
+        ALL_USERS={ALL_USERS}
            />}
       </div>
       <div 
@@ -104,17 +107,17 @@ export default function Home() {
       >
         <div>
           <ChatHeader 
-          user={message}
-          currentUser={currentUser}
+          user={MESSAGE}
+          CURRENT_USER={CURRENT_USER}
           getUserProfile={getUserProfile}
            />
         </div>
         <div>
           <div>
             <ChatMessage
-              key={currentUser.userId}
-              currentUser={currentUser}
-              message={message}
+              key={CURRENT_USER.userId}
+              CURRENT_USER={CURRENT_USER}
+              message={MESSAGE}
             />
           </div>
           <div>

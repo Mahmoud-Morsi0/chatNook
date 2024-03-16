@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "./../../components/Logo";
 import myImage from "../../assets/hero.png";
 import { Link } from "react-router-dom";
@@ -7,7 +6,9 @@ export default function LandingPage() {
   return (
     <>
       <div className="flex items-center justify-between ">
+        <div className="ms-16">
         <Logo></Logo>
+        </div>
         <div className="w-1/40 mr-44">
           <Link to="/login">
             <button className="text-cyan-800 bg-white border-2 border-cyan-800 border-solid rounded-md w-32 h-12  font-medium hover:bg-cyan-800 hover:text-white mx-4">
@@ -23,7 +24,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="flex items-center justify-around mt-20">
+      <div className="flex items-center justify-around mt-20 container ms-auto">
         <div className="flex flex-col w-1/3 ">
           <h1 className="text-5xl font-bold leading-relaxed">
             Connect friends easily <span className="text-cyan-800">&</span>{" "}

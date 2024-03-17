@@ -33,7 +33,7 @@ export default function SignupInputs() {
         value={values.fullName}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-6 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
+        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-2 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
           errors.fullName && touched.fullName ? "outline-red-500" : ""
         }`}
       />
@@ -54,7 +54,7 @@ export default function SignupInputs() {
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-6 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
+        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-2 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
           errors.email && touched.email ? "outline-red-500" : ""
         }`}
       />
@@ -75,7 +75,7 @@ export default function SignupInputs() {
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-6 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
+        className={`block w-5/6 h-10 rounded-md ml-3 mt-2 mb-2 py-1 pl-4 pr-20 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 ${
           errors.password && touched.password ? "outline-red-500" : ""
         }`}
       />

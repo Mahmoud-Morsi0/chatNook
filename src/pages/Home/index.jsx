@@ -1,116 +1,41 @@
-
 import UserProfile from "../../components/UserProfile";
 import ChatFooter from "../../components/ChatFooter";
 import ChatMessage from "../../components/ChatMessage";
 import ChatHeader from "../../components/ChatHeader";
 import { useState } from "react";
 import Message from "../../components/Message";
+import { MESSAGE, ALL_USERS } from "./mock";
 
 export default function Home() {
-
   const date = new Date();
   const datetext = date.getHours() + ":" + date.getMinutes();
   console.log(datetext);
   let [userProfile, setUserProfile] = useState(false);
   const getUserProfile = () => {
-    userProfile=!userProfile;
+    userProfile = !userProfile;
     setUserProfile(userProfile);
     console.log("user profile");
   };
-  
+
   const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
     userName: "ChaNook",
     userId: 1,
-    status:'Active'
+    status: "Active",
   };
-
-  const ALL_USERS=[
-    {
-      avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
-      userName: "Emo",
-      userId: 1,
-      status:'Active'
-    },
-    {
-      avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
-      userName: "Nour",
-      userId: 2,
-      status:'Active'
-    },
-    {
-      avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
-      userName: "Merna",
-      userId: 3,
-      status:'Active'
-    },
-    {
-      avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
-      userName: "Abdelrahman",
-      userId: 4,
-      status:''
-    },
-    {
-      avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
-      userName: "Morsi",
-      userId: 5,
-      status:''
-    },
-  ]
-  const MESSAGE = [
-    {
-      userId: 2,
-      name: "ChatNook",
-      avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
-      text: "Hello ChatNookHello ChatNookHello ChatNookHello ChatNookHello ChatNookHello",
-      date: "21:15",
-      status: "bendging",
-    },
-    {
-      userId: 1,
-      name: "Morsi",
-      avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
-      text: "Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum ",
-      date: "21:15",
-      status: "bendging",
-    },
-    {
-      userId: 2,
-      name: "ChatNook",
-      avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
-      text: "Hello Morsi",
-      date: "21:15",
-      status: "bndging",
-    },
-    {
-      userId: 1,
-      name: "Morsi",
-      avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
-      text: "Hello ChatNook",
-      date: "21:15",
-      status: "bending",
-    },
-  ];
-
 
   return (
     <div className="flex justify-center ">
       <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
-        {userProfile ? 
-        <UserProfile /> 
-        : <Message 
-        ALL_USERS={ALL_USERS}
-           />}
+        {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} />}
       </div>
-      <div 
-      className="md:w-9/12  sm:w-screen   flex flex-col justify-between"
-      >
+      <div className="md:w-9/12  sm:w-screen   flex flex-col justify-between">
         <div>
-          <ChatHeader 
-          user={MESSAGE}
-          CURRENT_USER={CURRENT_USER}
-          getUserProfile={getUserProfile}
-           />
+          <ChatHeader
+            user={MESSAGE}
+            CURRENT_USER={CURRENT_USER}
+            getUserProfile={getUserProfile}
+          />
         </div>
         <div>
           <div>

@@ -1,23 +1,17 @@
 import React from "react";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import { userValidationSchema } from "../schema/shemaValidation";
 
 export default function SignupInputs() {
-  const {
-    values,
-    handleChange,
-    handleBlur,
-    errors,
-    touched
-  } = useFormik({
+  const { values, handleChange, handleBlur, errors, touched } = useFormik({
     initialValues: {
       fullName: "",
       email: "",
-      password: ""
+      password: "",
     },
     validationSchema: userValidationSchema,
   });
- 
+
   return (
     <div className="">
       <label

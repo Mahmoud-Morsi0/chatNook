@@ -9,8 +9,8 @@ export default function Router() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>

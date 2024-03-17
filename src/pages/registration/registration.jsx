@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom"
 import SignWithGmailBtn from "../../components/SigninWithGoogle"
 import SectionBreak from "../../components/SectionBreak"
-import SignupInputs from './../../components/SignupInputs';
-import RegisterButton from './../../components/RegisterButton';
+import SignupInputs from '../../components/SignupInputs';
+import RegisterButton from '../../components/RegisterButton';
 
 const Registration = () => {
   return (
@@ -25,7 +25,7 @@ const Registration = () => {
       </div>
       <div className='m-auto w-72 text-center'>
       <RegisterButton/>
-      <p className='text-base text-gray-700 mt-2'>Already a member?<a className=' cursor-pointer font-bold text-[#1e7887]'>LOG IN</a> </p>
+      <p className='text-base text-gray-700 mt-2'>Already a member?<Link className=' cursor-pointer font-bold text-[#1e7887]' to="/login">LOG IN</Link> </p>
       </div>
     </div> 
     </div>

@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD:src/index.css
+=======
+/* .username-sec{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    justify-content: space-between;
+} */
+>>>>>>> 528267762b319170557ec9bfcd9a113f058eb704:chatNook/src/index.css

@@ -1,0 +1,70 @@
+export const ALL_USERS = [
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    userName: "Emo",
+    userId: 1,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+    userName: "Nour",
+    userId: 2,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
+    userName: "Merna",
+    userId: 3,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
+    userName: "Abdelrahman",
+    userId: 4,
+    status: "",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+    userName: "Morsi",
+    userId: 5,
+    status: "",
+  },
+];
+export const MESSAGE = [
+  {
+    userId: 2,
+    name: "ChatNook",
+    avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+    text: "Hello ChatNookHello ChatNookHello ChatNookHello ChatNookHello ChatNookHello",
+    date: "21:15",
+    status: "bendging",
+    id: "1",
+  },
+  {
+    userId: 1,
+    name: "Morsi",
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    text: "Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum Lorem Ipsum is Lorem Ipsum and I am Lorem Ipsum ",
+    date: "21:15",
+    status: "bendging",
+    id: "2",
+  },
+  {
+    userId: 2,
+    name: "ChatNook",
+    avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+    text: "Hello Morsi",
+    date: "21:15",
+    status: "bndging",
+    id: "3",
+  },
+  {
+    userId: 1,
+    name: "Morsi",
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    text: "Hello ChatNook",
+    date: "21:15",
+    status: "bending",
+    id: "4",
+  },
+];

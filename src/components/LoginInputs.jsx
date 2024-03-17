@@ -1,19 +1,13 @@
-import  { useState } from "react";
+import { useState } from "react";
 import RememberMeCheckbox from "./RememberMeCheckbox";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import { userValidationSchema } from "../schema/shemaValidation";
 export default function LoginInputs() {
-  const {
-    values,
-    handleChange,
-    handleBlur,
-    errors,
-    touched
-  } = useFormik({
+  const { values, handleChange, handleBlur, errors, touched } = useFormik({
     initialValues: {
       fullName: "",
       email: "",
-      password: ""
+      password: "",
     },
     validationSchema: userValidationSchema,
   });

@@ -31,7 +31,6 @@ const Registration = () => {
     validationSchema: userValidationSchema,
     onSubmit,
   });
-
   return (
     <section className="w-full h-full pb-12">
       <div className="flex flex-row w-5/6 m-auto">

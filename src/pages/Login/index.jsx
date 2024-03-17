@@ -6,44 +6,42 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <>
-      <section className="w-full py-9 h-full bg-white">
-        <div className="flex flex-row  m-auto ">
-          <div className="left-sec pt-20 w-1/2">
-            <img
-              className="w-4/6 m-auto"
-              src="login img/Speech bubbles-amico 1.png"
-              alt=""
-            />
+    <section className="w-full py-9 h-full bg-white">
+      <div className="flex flex-row  m-auto ">
+        <div className="left-sec pt-20 w-1/2">
+          <img
+            className="w-4/6 m-auto"
+            src="login img/Speech bubbles-amico 1.png"
+            alt=""
+          />
+        </div>
+        <div className="right-sec w-1/2">
+          <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
+            Hello, Welcome Back!
           </div>
-          <div className="right-sec w-1/2">
-            <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
-              Hello, Welcome Back!
-            </div>
-            <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
-              Happy to see you again, login first.
+          <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
+            Happy to see you again, login first.
+          </p>
+          <SignWithGmailBtn />
+          <SectionBreak />
+          <div className="form-sec ps-28 w-11/2 mb-10 ">
+            <LoginInputs />
+          </div>
+          <div className="m-auto w-72 text-center">
+            <LoginButton />
+            <p className="text-base mt-2 text-g">
+              No account Yet?{" "}
+              <Link
+                className=" cursor-pointer font-bold text-[#1e7887]"
+                to="/register"
+              >
+                SIGN UP{" "}
+              </Link>{" "}
             </p>
-            <SignWithGmailBtn />
-            <SectionBreak />
-            <div className="form-sec ps-28 w-11/2 mb-10 ">
-              <LoginInputs />
-            </div>
-            <div className="m-auto w-72 text-center">
-              <LoginButton />
-              <p className="text-base mt-2 text-g">
-                No account Yet?{" "}
-                <Link
-                  className=" cursor-pointer font-bold text-[#1e7887]"
-                  to="/register"
-                >
-                  SIGN UP{" "}
-                </Link>{" "}
-              </p>
-            </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

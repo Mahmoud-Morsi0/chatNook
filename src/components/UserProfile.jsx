@@ -1,7 +1,4 @@
-
 import { CiLogout } from "react-icons/ci";
-
-// eslint-disable-next-line react/prop-types
 export default function UserProfile({ className }) {
   return (
     <div

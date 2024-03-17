@@ -1,12 +1,8 @@
-// import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-//Pages
-// import Home from "../pages/Home/Home";
-import Home from "../pages/home/Home"
-import Login from '../pages/login/login';
-import LandingPage from "../pages/LandingPage";
-import Registration from './../pages/registration/registration';
+import Home from "../pages/home/Home";
+import Login from '../pages/login/Login';
+import LandingPage from "../pages/landingPage";
+import Registration from '../pages/registration/Registration';
 
 export default function Router() {
   return (

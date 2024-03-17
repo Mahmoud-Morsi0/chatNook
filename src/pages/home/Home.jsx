@@ -20,11 +20,12 @@ export default function Home() {
   };
   
   const CURRENT_USER = {
-    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
-    userName: "Morsi",
+    avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+    userName: "ChaNook",
     userId: 1,
     status:'Active'
   };
+
   const ALL_USERS=[
     {
       avatar: "https://docs.material-tailwind.com/img/face-1.jpg",

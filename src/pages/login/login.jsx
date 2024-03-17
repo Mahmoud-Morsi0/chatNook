@@ -3,6 +3,7 @@ import SignWithGmailBtn from '../../components/SigninWithGoogle'
 import SectionBreak from '../../components/SectionBreak'
 import LoginInputs from '../../components/LoginInputs';
 import LoginButton from '../../components/LoginButton';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
       </div>
       <div className='m-auto w-72 text-center'>
       <LoginButton/>
-      <p className='text-base mt-2'>No account Yet? <a className=' cursor-pointer font-bold text-cyan-700'>SIGN UP</a> </p>
+      <p className='text-base mt-2 text-g'>No account Yet? <Link className=' cursor-pointer font-bold text-[#1e7887]' to="/register" >SIGN UP </Link> </p>
       </div>
     </div> 
     </div>

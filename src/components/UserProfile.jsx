@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { CiLogout } from "react-icons/ci";
 export default function UserProfile({ className }) {
   return (

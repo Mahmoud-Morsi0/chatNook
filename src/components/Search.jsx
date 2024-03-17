@@ -14,7 +14,7 @@ import { useState } from "react";
 
   return (
 
-    <div className=" w-3/6">
+    <div className="">
       <input
         type="text"
         name="search"

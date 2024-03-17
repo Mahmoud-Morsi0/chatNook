@@ -11,7 +11,7 @@ const Message = () => {
             <Logo />
         </div>
         
-        <div>
+        <div className='max-md:w-48'>
 
             <Search/>
         </div>

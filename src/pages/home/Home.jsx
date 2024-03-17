@@ -96,7 +96,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center ">
-      <div className="md:w-3/12 h-screen  sm:hidden md:inline-block">
+      <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
         {userProfile ? 
         <UserProfile /> 
         : <Message 

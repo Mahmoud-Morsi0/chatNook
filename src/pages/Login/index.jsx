@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   return (
   <>
-    <section className='w-full py-20 h-full bg-white'>
-    <div className='flex flex-row w-5/6 m-auto h-5/6'>
+    <section className='w-full py-9 h-full bg-white'>
+    <div className='flex flex-row  m-auto '>
     <div className='left-sec pt-20 w-1/2'>
     <img className='w-4/6 m-auto' src="login img/Speech bubbles-amico 1.png" alt="" /> 
     </div>

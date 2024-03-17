@@ -1,15 +1,16 @@
 
 
-import React from "react";
-import { useFormik } from 'formik';
 import { userValidationSchema } from "../../schema/shemaValidation";
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
-import SignupInputs from './../../components/SignupInputs';
-import RegisterButton from './../../components/RegisterButton';
+import SignupInputs from '../../components/SignupInputs';
+import RegisterButton from '../../components/RegisterButton';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
 
 const Registration = () => {
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (e,values, actions) => {
+    e.preventDefault();
     await new Promise((resolve) => setTimeout(resolve, 1000))
     actions.resetForm()
   }
@@ -34,9 +35,9 @@ const Registration = () => {
   });
 
   return (
-    <section className='w-full pt-20 h-lvh'>
-         <section className='w-full pt-20 h-lvh'>
-    <div className='flex flex-row w-5/6 m-auto h-5/6'>
+    <section className='w-full h-full pb-12'>
+         <section className='w-full pt-20'>
+    <div className='flex flex-row w-5/6 m-auto'>
     <div className='left-sec pt-20 w-1/2'>
     <img className='w-4/6 m-auto' src="login img/Speech bubbles-amico 1.png" alt="" /> 
     </div>

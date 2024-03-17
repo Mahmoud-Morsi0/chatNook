@@ -7,7 +7,7 @@ export default function LandingPage() {
     <>
       <div className="flex items-center justify-between ">
         <div className="ms-16">
-        <Logo></Logo>
+          <Logo></Logo>
         </div>
         <div className="w-1/40 mr-44">
           <Link to="/login">

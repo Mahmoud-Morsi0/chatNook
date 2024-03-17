@@ -1,9 +1,9 @@
 // import React from "react";
 
 import UserProfile from "../../components/UserProfile";
-import ChatHeader from "../../components/ChatHeader";
-import ChatFooter from "../../components/ChatFooter";
-import ChatMessage from "../../components/ChatMessage";
+import ChatHeader from "../../components/chatHeader";
+import ChatFooter from "../../components/chatFooter";
+import ChatMessage from "../../components/chatMessage";
 import { useState } from "react";
 import Message from "../../components/Message";
 

@@ -1,14 +1,15 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link } from "react-router-dom";
-import RememberMeCheckbox from "../../components/RememberMeCheckbox";
 import { useFormik } from "formik";
 import { userValidationSchema } from "../../schema/shemaValidation";
 import { login } from "../../api/auth";
 import { useState } from "react";
+import { CookiesProvider, useCookies } from 'react-cookie'
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [cookies, setCookie] = useCookies(['user'])
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -17,6 +18,7 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     const repsonse = await login(values);
+    setCookie('user', repsonse, { path: '/' })
 
     console.log(response);
   };
@@ -33,7 +35,7 @@ const Login = () => {
       email: "",
       password: "",
     },
-    // validationSchema: userValidationSchema,
+    validationSchema: userValidationSchema,
     onSubmit: (values) => {
       onSubmit(values);
     },
@@ -112,13 +114,15 @@ const Login = () => {
                   Remember Me
                 </label>
               </div>
+              <div className="flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
+                className=" text-center text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
               >
                 Login
               </button>
+              </div>
             </form>
           </div>
 

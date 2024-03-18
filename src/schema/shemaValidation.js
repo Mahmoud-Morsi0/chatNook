@@ -1,6 +1,6 @@
 import * as yup from "yup";
 export const userValidationSchema = yup.object().shape({
-  name: yup
+  fullName: yup
     .string()
     .required("Full name is required")
     .min(3, "Full name should be at least 3 characters long")

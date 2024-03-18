@@ -34,7 +34,7 @@ const Registration = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      fullName: "",
       email: "",
       password: "",
     },
@@ -66,24 +66,24 @@ const Registration = () => {
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
                 <div className=" w-full flex flex-col justify-center mb-6">
                   <label
-                    htmlFor="name"
+                    htmlFor="full name"
                     className="block text-sm ml-3 font-medium leading-6 text-gray-900"
                   >
                     {" "}
-                    name
+                    full name
                   </label>
                   <input
                     type="text"
                     name="name"
                     id="fullName"
-                    value={formik.values.name}
+                    value={formik.values.fullName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     className="input w-11/12 text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-10"
                   />
-                  {formik.errors.name && formik.touched.name ? (
+                  {formik.errors.fullName && formik.touched.fullName ? (
                     <div className=" w-11/12 text-red-600">
-                      {formik.errors.name}
+                      {formik.errors.fullName}
                     </div>
                   ) : (
                     ""

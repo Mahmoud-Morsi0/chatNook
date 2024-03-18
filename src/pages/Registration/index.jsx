@@ -67,7 +67,7 @@ const Registration = () => {
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
                 <div className=" w-full flex flex-col justify-center mb-6">
                   <label
-                    htmlFor="full name"
+                    htmlFor="fullName"
                     className="block text-sm ml-3 font-medium leading-6 text-gray-900"
                   >
                     {" "}
@@ -75,7 +75,7 @@ const Registration = () => {
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    name="fullName"
                     id="fullName"
                     value={formik.values.fullName}
                     onChange={formik.handleChange}

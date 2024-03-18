@@ -16,21 +16,22 @@ const Registration = () => {
   //   console.log(repsonse);
   // actions.resetForm();
   // loaging = false;
-  // // const sendDataToApi = async (values) => {
-  // //   try {
-  // //     const response = await axios.post(
-  // //       "https://note-sigma-black.vercel.app/api/v1/users/signUp",
-  // //       values,{
-  //       // headers: {
-  //       //   'Content-Type': 'application/json' // Specify the content type as JSON
-  //       // }
-  //     }
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const sendDataToApi = async (values) => {
+    try {
+      const response = await axios.post(
+        "https://note-sigma-black.vercel.app/api/v1/users/signUp",
+        values,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {

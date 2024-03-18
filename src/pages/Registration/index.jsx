@@ -1,35 +1,31 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 // import { registration } from "../../api/auth";
 import { userValidationSchema } from "../../schema/shemaValidation";
-import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
+import { registration } from "../../api/auth";
 
 const Registration = () => {
-  // let loaging = true;
-  // const onSubmit = async (values, actions) => {
-  //   // loaging = true;
-  //   console.log(values);
-  // const repsonse = await registration(values);
-  //   console.log(repsonse);
-  // actions.resetForm();
-  // loaging = false;
-  const sendDataToApi = async (values) => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = async (values) => {
+    setLoading(true);
+    console.log(values);
     try {
-      const response = await axios.post(
-        "https://note-sigma-black.vercel.app/api/v1/users/signUp",
-        values,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response.data);
+      const response = await registration(values);
+      console.log(response);
+      if (response.status === 201) {
+        setLoading(false);
+        navigate("/login");
+      }
     } catch (error) {
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -40,7 +36,9 @@ const Registration = () => {
       password: "",
     },
     validationSchema: userValidationSchema,
-    onSubmit: sendDataToApi,
+    onSubmit: (values) => {
+      onSubmit(values);
+    },
   });
 
   return (
@@ -65,89 +63,111 @@ const Registration = () => {
             <SectionBreak />
             <div className="form-sec mb-10 flex flex-col items-center">
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
-                <div className=" w-full flex flex-col justify-center mb-6">
-                  <label
-                    htmlFor="fullName"
-                    className="block text-sm ml-3 font-medium leading-6 text-gray-900"
-                  >
-                    {" "}
-                    full name
-                  </label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    id="fullName"
-                    value={formik.values.fullName}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="input w-11/12 text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-10"
-                  />
-                  {formik.errors.fullName && formik.touched.fullName ? (
-                    <div className=" w-11/12 text-red-600">
-                      {formik.errors.fullName}
+                <div className="flex m-auto justify-center">
+                  {errorMessage ? (
+                    <div className="alert alert-error w-11/12 flex flex-col justify-center mb-4 text-white ">
+                      {errorMessage}
                     </div>
                   ) : (
                     ""
                   )}
                 </div>
-                <div className=" w-full flex flex-col justify-center mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm ml-3 font-medium leading-6 text-gray-900"
-                  >
-                    {" "}
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    id="name"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="input w-11/12 text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
-                  />
-                  {formik.errors.email && formik.touched.email ? (
-                    <div className="w-11/12 text-red-600">
-                      {formik.errors.email}
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                <div className="flex m-auto justify-center ">
+                  <div className=" w-11/12 mb-6">
+                    <label
+                      htmlFor="fullName"
+                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                    >
+                      full name
+                    </label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      id="fullName"
+                      value={formik.values.fullName}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-10"
+                    />
+                    {formik.errors.fullName && formik.touched.fullName ? (
+                      <div className=" w-11/12 text-red-600">
+                        {formik.errors.fullName}
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
-                <div className=" w-full flex flex-col justify-center mb-6">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm ml-3 font-medium leading-6 text-gray-900"
-                  >
-                    {" "}
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="input w-11/12 text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
-                  />
-                  {formik.errors.password && formik.touched.password ? (
-                    <div className=" w-11/12 text-red-600">
-                      {formik.errors.password}
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                <div className="flex m-auto justify-center">
+                  <div className="w-11/12 mb-6">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                    >
+                      {" "}
+                      Email
+                    </label>
+                    <input
+                      type="text"
+                      name="email"
+                      id="name"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
+                    />
+                    {formik.errors.email && formik.touched.email ? (
+                      <div className="w-11/12 text-red-600">
+                        {formik.errors.email}
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
-                <div className="w-full flex flex-col justify-center">
-                  <button
-                    type="submit"
-                    disabled={!(formik.isValid && formik.dirty)}
-                    className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
-                  >
-                    Sign up
-                  </button>
+                <div className="flex m-auto justify-center">
+                  <div className="w-11/12 mb-6">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                    >
+                      {" "}
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
+                    />
+                    {formik.errors.password && formik.touched.password ? (
+                      <div className=" w-11/12 text-red-600">
+                        {formik.errors.password}
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <div className="flex m-auto justify-center">
+                  <div className="w-11/12 flex justify-center">
+                    {loading ? (
+                      <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
+                        <AiOutlineLoading3Quarters className="animate-spin w-6 h-6" />
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        disabled={!(formik.isValid && formik.dirty)}
+                        className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
+                      >
+                        Sign up
+                      </button>
+                    )}
+                  </div>
                 </div>
               </form>
             </div>

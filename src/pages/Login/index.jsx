@@ -2,7 +2,6 @@ import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { userValidationSchema } from "../../schema/shemaValidation";
 import { login } from "../../api/auth";
 import { useState } from "react";
 import { CookiesProvider, useCookies } from 'react-cookie'
@@ -19,7 +18,6 @@ const Login = () => {
     console.log(values);
     const repsonse = await login(values);
     setCookie('user', repsonse, { path: '/' })
-
     console.log(response);
   };
   const {
@@ -35,7 +33,7 @@ const Login = () => {
       email: "",
       password: "",
     },
-    validationSchema: userValidationSchema,
+    // validationSchema: userValidationSchema,
     onSubmit: (values) => {
       onSubmit(values);
     },

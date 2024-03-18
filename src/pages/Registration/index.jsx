@@ -3,12 +3,9 @@ import SectionBreak from "../../components/SectionBreak";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useFormik } from "formik";
-// import { registration } from "../../api/auth";
 import { userValidationSchema } from "../../schema/shemaValidation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
 import { registration } from "../../api/auth";
-
 const Registration = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -21,11 +18,12 @@ const Registration = () => {
       const response = await registration(values);
       console.log(response);
       if (response.status === 201) {
-        setLoading(false);
         navigate("/login");
       }
     } catch (error) {
       setErrorMessage(error.response.data.error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,7 +63,7 @@ const Registration = () => {
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
                 <div className="flex m-auto justify-center">
                   {errorMessage ? (
-                    <div className="alert alert-error w-11/12 flex flex-col justify-center mb-4 text-white ">
+                    <div className="alert  w-11/12 flex flex-col justify-center mb-4 text-white  bg-red-600 h-8">
                       {errorMessage}
                     </div>
                   ) : (

@@ -1,9 +1,7 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link } from "react-router-dom";
-import RememberMeCheckbox from "../../components/RememberMeCheckbox";
 import { useFormik } from "formik";
-import { userValidationSchema } from "../../schema/shemaValidation";
 import { login } from "../../api/auth";
 import { useState } from "react";
 
@@ -15,10 +13,9 @@ const Login = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
-    const repsonse = await login(values);
-
-    console.log(response);
+    // console.log(values);
+    // const repsonse = await login(values);
+    // console.log(repsonse);
   };
   const {
     values,

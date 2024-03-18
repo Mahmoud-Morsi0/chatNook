@@ -1,8 +1,12 @@
-
 .search-icon,
 .search-text {
   color: #758a88;
 }
 .hr {
   background-color: #e3e8e7 !important;
+}
+.container-navbar {
+  width: 85%;
+  margin: 0 auto;
+  background-color: blue;
 }

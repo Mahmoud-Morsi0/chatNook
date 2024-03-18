@@ -52,7 +52,7 @@ const Message = () => {
                 className="p-1 flex justify-center cursor-pointer "
                 onClick={() => handelChat(mess.chatId)}
               >
-                <div className=" message-container flex justify-between h-16 p-2 mb-1 ">
+                <div className=" message-container flex justify-between h-20 p-3">
                   <div className="img-sec w-24 pt-1">
                     <img
                       src={mess.avatar}
@@ -64,7 +64,7 @@ const Message = () => {
                     <div className="text-sm font-bold text-gray-600">
                       {mess.chatName}
                     </div>
-                    <div className="text-zinc-600 text-xs">
+                    <div className="text-zinc-400  text-xs">
                       Not too bad, just trying to catch up on some work. How
                       about you?
                     </div>

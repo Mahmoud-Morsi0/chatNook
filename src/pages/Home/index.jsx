@@ -2,7 +2,9 @@ import UserProfile from "../../components/UserProfile";
 import ChatFooter from "../../components/ChatFooter";
 import ChatMessage from "../../components/ChatMessage";
 import ChatHeader from "../../components/ChatHeader";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import DarkMode from "./../../components/DarkMode";
+
 import Message from "../../components/Message";
 import { MESSAGE, ALL_USERS } from "./mock";
 

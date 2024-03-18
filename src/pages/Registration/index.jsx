@@ -1,38 +1,16 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link } from "react-router-dom";
-import React from "react";
 import { useFormik } from "formik";
-// import { registration } from "../../api/auth";
 import { userValidationSchema } from "../../schema/shemaValidation";
-import axios from "axios";
+import { signup } from "../../api/auth";
 
 const Registration = () => {
-  // let loaging = true;
-  // const onSubmit = async (values, actions) => {
-  //   // loaging = true;
-  //   console.log(values);
-  // const repsonse = await registration(values);
-  //   console.log(repsonse);
-  // actions.resetForm();
-  // loaging = false;
-  const sendDataToApi = async (values) => {
-    try {
-      const response = await axios.post(
-        "https://note-sigma-black.vercel.app/api/v1/users/signUp",
-        values,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  const onSubmit = async (values) => {
+    console.log(values);
+  const repsonse = await signup(values);
+    console.log(repsonse);
+  }
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -40,7 +18,7 @@ const Registration = () => {
       password: "",
     },
     validationSchema: userValidationSchema,
-    onSubmit: sendDataToApi,
+    onSubmit: (value)=>{onSubmit(value)},
   });
 
   return (

@@ -7,6 +7,9 @@ import { useState } from "react";
 import { CookiesProvider, useCookies } from 'react-cookie'
 
 const Login = () => {
+  let curentUser={
+
+  }
   const [isChecked, setIsChecked] = useState(false);
   const [cookies, setCookie] = useCookies(['user'])
 
@@ -17,8 +20,9 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     const repsonse = await login(values);
-    setCookie('user', repsonse, { path: '/' })
-    console.log(response);
+    console.log(repsonse.data.id);
+    curentUser=repsonse.data
+    setCookie('user', repsonse.data, { path: '/' })
   };
   const {
     values,

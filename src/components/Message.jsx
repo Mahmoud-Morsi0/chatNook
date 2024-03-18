@@ -3,18 +3,20 @@ import Logo from "./Logo";
 import { IoIosContacts } from "react-icons/io";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { useState } from "react";
-import { RiImageAddLine } from "react-icons/ri";
 import { CHATS } from "../pages/Home/mock";
+import { getAllUsers } from "../api/auth";
 const Message = () => {
-  
   const [searchValue, setSearchValue] = useState("");
   const handelSearch = (e) => {
     setSearchValue(e.target.value);
     console.log(searchValue);
   };
-  const handelChat = (id) => {
+  const handelChat = async (id) => {
     console.log(id);
+    const allUsers = await getAllUsers();
+    console.log(allUsers);
   };
+
   return (
     <>
       <div className="container flex flex-col justify-start border border-[#1e77872c] h-screen p-3">
@@ -78,7 +80,6 @@ const Message = () => {
             );
           })}
         </div>
-        
       </div>
     </>
   );

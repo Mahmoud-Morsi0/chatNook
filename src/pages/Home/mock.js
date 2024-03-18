@@ -68,3 +68,59 @@ export const MESSAGE = [
     id: "4",
   },
 ];
+export const CHATS = [
+  {
+    chatId: 1,
+    chatName: "Morsi",
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    messages: [],
+  },
+  {
+      chatId: 2,
+      chatName: "Abdo",
+      avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+      messages: [],
+    },
+    {
+      chatId: 3,
+      chatName: "Emo",
+      avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
+      messages: [],
+    },
+    {
+      chatId: 4,
+      chatName: "Nour",
+      avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+      messages: [],
+    },
+    {
+      chatId: 5,
+      chatName: "Merna",
+      avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+      messages: [],
+    },
+    {
+      chatId: 6,
+      chatName: "Hambozo",
+      avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
+      messages: [],
+    },
+    {
+      chatId: 7,
+      chatName: "Hamada",
+      avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+      messages: [],
+    },
+    {
+      chatId: 8,
+      chatName: "Sola",
+      avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
+      messages: [],
+    },
+    {
+      chatId: 9,
+      chatName: "Mohamed",
+      avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
+      messages: [],
+    },
+];

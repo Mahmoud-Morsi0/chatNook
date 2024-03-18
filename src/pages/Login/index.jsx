@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
 import { useState } from "react";
+import { CookiesProvider, useCookies } from 'react-cookie'
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [cookies, setCookie] = useCookies(['user'])
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
 
   const onSubmit = async (values) => {
-    // console.log(values);
-    // const repsonse = await login(values);
-    // console.log(repsonse);
+    console.log(values);
+    const repsonse = await login(values);
+    setCookie('user', repsonse, { path: '/' })
+    console.log(response);
   };
   const {
     values,
@@ -109,13 +112,15 @@ const Login = () => {
                   Remember Me
                 </label>
               </div>
+              <div className="flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
+                className=" text-center text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
               >
                 Login
               </button>
+              </div>
             </form>
           </div>
 

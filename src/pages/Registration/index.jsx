@@ -1,7 +1,7 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { userValidationSchema } from "../../schema/shemaValidation";
 
@@ -44,7 +44,7 @@ const Registration = () => {
   return (
     <>
       <section className="py-14">
-        <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+        <div className="xl:grid  gap-4 lg:grid grid-cols-2">
           <div className="left-sec flex  justify-center ">
             <img
               className="w-4/6"

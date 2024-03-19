@@ -13,11 +13,9 @@ const Login = () => {
   let { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies, setCookie] = useCookies(["user"]);
-
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
@@ -73,7 +71,6 @@ const Login = () => {
               Help you to contact everyone with just easy way
             </p>
             <SignWithGmailBtn />
-
             <div className="form-sec mb-10 flex flex-col items-center">
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
                 <div className=" flex justify-center">
@@ -90,6 +87,7 @@ const Login = () => {
                     ""
                   )}
                 </div>
+
 
                 <div className="flex m-auto justify-center">
                   <div className="w-11/12 mb-6">

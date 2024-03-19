@@ -1,12 +1,12 @@
 export const ALL_USERS = [
   {
     avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
-    userName: "Emo",
+    userName: "Morsi",
     userId: 1,
     status: "Active",
   },
   {
-    avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
     userName: "Nour",
     userId: 2,
     status: "Active",
@@ -25,8 +25,68 @@ export const ALL_USERS = [
   },
   {
     avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
-    userName: "Morsi",
+    userName: "Emo",
     userId: 5,
+    status: "",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    userName: "Morsi",
+    userId: 6,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+    userName: "Nour",
+    userId: 7,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
+    userName: "Merna",
+    userId: 8,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
+    userName: "Abdelrahman",
+    userId: 9,
+    status: "",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+    userName: "Emo",
+    userId: 10,
+    status: "",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-1.jpg",
+    userName: "Morsi",
+    userId: 11,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+    userName: "Nour",
+    userId: 12,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-3.jpg",
+    userName: "Merna",
+    userId: 13,
+    status: "Active",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-4.jpg",
+    userName: "Abdelrahman",
+    userId: 14,
+    status: "",
+  },
+  {
+    avatar: "https://docs.material-tailwind.com/img/face-5.jpg",
+    userName: "Emo",
+    userId: 15,
     status: "",
   },
 ];

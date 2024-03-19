@@ -8,6 +8,7 @@ import { MESSAGE, ALL_USERS } from "./mock";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
+import AllConnections from "./../../components/AllConnections";
 
 export default function Home() {
   const date = new Date();
@@ -31,7 +32,17 @@ export default function Home() {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
-    console.log(hover)
+    console.log(hover);
+  };
+
+  let [connectionToggel, setconnectionToggel] = useState(false);
+  const handelconnectionToggel = () =>
+    setconnectionToggel((connectionToggel = !connectionToggel));
+
+  const [searchValue, setSearchValue] = useState("");
+  const handelConnectionSearch = (e) => {
+    setSearchValue(e.target.value);
+    console.log(searchValue);
   };
   const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
@@ -43,8 +54,8 @@ export default function Home() {
   return (
     <div className="flex justify-between items-center ">
       {/*Side Nave*/}
-      <div className=" w-16 h-screen bg- border border-gray-200 flex flex-col justify-between items-center">
-        <div className=" h-16 w-16 bg-slate-200 text-center">Logo</div>
+      <div className=" relative w-20 h-screen bg- border border-gray-200 flex flex-col justify-between items-center">
+        <div className=" h-20 w-16 bg-slate-200 text-center">Logo</div>
         <div className="w-full h-32 flex flex-col justify-between items-center">
           <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
             <GrGroup className=" cursor-pointer text-gray-600 text-3xl hover:text-gray-950" />
@@ -53,7 +64,10 @@ export default function Home() {
             <IoChatbubblesOutline className=" cursor-pointer text-gray-600 text-3xl  hover:text-gray-950" />
           </div>
           <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
-            <FaRegUser className=" cursor-pointer text-gray-600  hover:text-gray-950 text-3xl" />
+            <FaRegUser
+              onClick={handelconnectionToggel}
+              className=" cursor-pointer text-gray-600  hover:text-gray-950 text-3xl"
+            />
           </div>
         </div>
         <div className="flex flex-col justify-center items-center">
@@ -88,6 +102,19 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/*Connection*/}
+      <div
+        className={` ${
+          connectionToggel ? "w-80 " : "w-0"
+        } transition-all transition-duration: 300ms; bg-[#ffffff]  absolute h-screen start-20 z-10 `}
+      >
+        <AllConnections
+          handelSearch={handelConnectionSearch}
+          searchValue={searchValue}
+          ALL_USERS={ALL_USERS}
+        />
+      </div>
+
       {/* chat */}
       <div className="w-full flex justify-center ">
         <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
@@ -112,7 +139,7 @@ export default function Home() {
             </div>
             <div>
               <ChatFooter
-              key={message.userId}
+                key={message.userId}
                 handelMessageChange={handelMessageChange}
                 message={message}
               />

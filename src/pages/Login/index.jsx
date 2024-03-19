@@ -10,7 +10,7 @@ import { Cookies } from "react-cookie";
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
+  const cookie = new Cookies();
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
@@ -18,11 +18,11 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     const repsonse = await login(values);
-    setCookie("user", repsonse.data.id, { path: "/" });
-    console.log(cookies);
-    Cookies.get("user");
+    // setCookie("user", repsonse.data.id, { path: "/" });
 
-    // removeCookie('user')
+    console.log(cookie.get("user"));
+
+    removeCookie("user");
   };
   const {
     values,

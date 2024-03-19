@@ -1,38 +1,28 @@
-import { useState } from "react";
-import { CHATS } from "../pages/Home/mock";
-import { getAllUsers } from "../api/auth";
-import { FaUserPen } from "react-icons/fa6";
+/* eslint-disable react/prop-types */
 
-const Message = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const handelSearch = (e) => {
-    setSearchValue(e.target.value);
-    console.log(searchValue);
-  };
-  
-  const handelChat = async (id) => {
-    console.log(id);
-    const allUsers = await getAllUsers();
-    console.log(allUsers);
-  };
+import { FaUserPen } from 'react-icons/fa6';
+import { CHATS } from '../pages/Home/mock';
+
+
+const Group = ({ handelChat,handelSearch, searchValue}) => {
 
   return (
-    <div className="container flex flex-col justify-start items-center border border-[#1e77872c] h-screen ">
-      <div className="w-full flex justify-between items-center pe-7 ps-3">
+    <div className="container flex flex-col justify-start items-center h-screen  overflow-hidden ">
+      <div className="w-full flex justify-between items-center pe-7 ps-3 ">
         <div className=" text-gray-500">
-          <h2 className="">Messages</h2>
+          <h2 className="">Groups</h2>
         </div>
         <div className=" text-gray-600">
           <FaUserPen className="text-xl cursor-pointer" />
         </div>
       </div>
-      <div className="w-full m-auto p-1 h-10 mb-4">
+      <div className=" m-auto p-1 h-16 mb-4 ">
         <input
           type="text"
           name="search"
           id="search"
           placeholder=" Search... "
-          className=" rounded-full my-2 py-1 pl-4 pr-20 text-[#1e7881] focus:outline-none focus:ring-1 focus:ring-[#1e7881] placeholder:text-[#1e7881] sm:text-sm sm:leading-6 bg-gray-100 "
+          className=" rounded-full my-2 py-1 pl-4 pr-20 text-[#1e7881] focus:outline-none focus:ring-1 focus:ring-[#1e7881] placeholder:text-[#1e7881] sm:text-sm sm:leading-6 bg-gray-300 "
           onChange={handelSearch}
           value={searchValue}
         />
@@ -75,7 +65,7 @@ const Message = () => {
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Message;
+export default Group

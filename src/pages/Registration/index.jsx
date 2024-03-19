@@ -1,14 +1,27 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useFormik } from "formik";
 import { userValidationSchema } from "../../schema/shemaValidation";
-
 import { registration } from "../../api/auth";
+import DarkMode from "./../../components/DarkMode";
+import React, { useState, useEffect } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
-
 const Registration = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -42,10 +55,11 @@ const Registration = () => {
   });
 
   return (
-    <>
-      <section className="py-14">
+
+      <section className="py-14 h-screen">
         <div className="xl:grid  gap-4 lg:grid grid-cols-2">
-          <div className="left-sec flex  justify-center ">
+          <div className="left-sec  flex flex-col items-center">
+            <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <img
               className="w-4/6"
               src="login img/Speech bubbles-amico 1.png"
@@ -56,11 +70,10 @@ const Registration = () => {
             <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
               Hello, Welcome Back!
             </div>
-            <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
-              Happy to see you again, login first.
+            <p className="sub-heading text-gray-400 text-sm text-center block mb-7 color font-medium">
+              Help you to contact everyone with just easy way
             </p>
             <SignWithGmailBtn />
-
             <div className="form-sec mb-10 flex flex-col items-center">
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
                 <div className=" flex justify-center">
@@ -81,7 +94,7 @@ const Registration = () => {
                   <div className=" w-11/12 mb-6">
                     <label
                       htmlFor="fullName"
-                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                      className="block text-sm ml-3 font-medium leading-6 text-gray-900 color"
                     >
                       full name
                     </label>
@@ -92,7 +105,7 @@ const Registration = () => {
                       value={formik.values.fullName}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-10"
+                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-10 bg"
                     />
                     {formik.errors.fullName && formik.touched.fullName ? (
                       <div className=" w-11/12 text-red-600">
@@ -107,7 +120,7 @@ const Registration = () => {
                   <div className="w-11/12 mb-6">
                     <label
                       htmlFor="email"
-                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                      className="block text-sm ml-3 font-medium leading-6 text-gray-900 color"
                     >
                       {" "}
                       Email
@@ -119,7 +132,7 @@ const Registration = () => {
                       value={formik.values.email}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
+                      className="input w-full text-gray-900 focus:outline-none bg grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
                     />
                     {formik.errors.email && formik.touched.email ? (
                       <div className="w-11/12 text-red-600">
@@ -134,7 +147,7 @@ const Registration = () => {
                   <div className="w-11/12 mb-6">
                     <label
                       htmlFor="password"
-                      className="block text-sm ml-3 font-medium leading-6 text-gray-900"
+                      className="block text-sm ml-3 font-medium leading-6 color text-gray-900"
                     >
                       {" "}
                       Password
@@ -146,7 +159,7 @@ const Registration = () => {
                       value={formik.values.password}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      className="input w-full text-gray-900 focus:outline-none grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
+                      className="input w-full text-gray-900 focus:outline-none bg grow focus:ring-2 focus:ring-gray-200 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-gray-100 focus:bg-gray-100"
                     />
                     {formik.errors.password && formik.touched.password ? (
                       <div className=" w-11/12 text-red-600">
@@ -190,7 +203,6 @@ const Registration = () => {
           </div>
         </div>
       </section>
-    </>
   );
 };
 

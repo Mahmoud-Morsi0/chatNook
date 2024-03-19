@@ -20,22 +20,25 @@ export default function Home() {
   const [hover, setHover] = useState(false);
   const [message, setMessage] = useState("");
   let [userProfile, setUserProfile] = useState(false);
-  let [connectionToggel, setconnectionToggel] = useState(false);
+  let [connectionTohhle, setconnectionTohhle] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  let [groupToggel, setGroupToggel] = useState(false);
-  let [chatToggel, setChatToggel] = useState(false);
+  let [groupTohhle, setGroupTohhle] = useState(false);
+  let [chatTohhle, setChatTohhle] = useState(false);
 
-  const handelChat = async (id) => {
+  const handleChat = async (id) => {
     console.log(id);
     const allUsers = await getAllUsers();
     console.log(allUsers);
   };
   const getUserProfile = () => {
     userProfile = !userProfile;
+    setGroupTohhle(false);
+    setChatTohhle(false);
+    setconnectionTohhle(false);
     setUserProfile(userProfile);
   };
 
-  const handelMessageChange = (e) => {
+  const handleMessageChange = (e) => {
     return setMessage(e.target.value);
   };
   console.log(message);
@@ -45,24 +48,24 @@ export default function Home() {
     console.log(hover);
   };
 
-  const handelconnectionToggel = () => {
-    setGroupToggel(false);
-    setChatToggel(false);
-    setconnectionToggel(!connectionToggel);
+  const handleconnectionTohhle = () => {
+    setGroupTohhle(false);
+    setChatTohhle(false);
+    setconnectionTohhle(!connectionTohhle);
   };
-  const handelSearch = (e) => {
+  const handleSearch = (e) => {
     setSearchValue(e.target.value);
   };
   console.log(searchValue);
-  const handelGroupToggel = () => {
-    setconnectionToggel(false);
-    setChatToggel(false);
-    setGroupToggel(!groupToggel);
+  const handleGroupTohhle = () => {
+    setconnectionTohhle(false);
+    setChatTohhle(false);
+    setGroupTohhle(!groupTohhle);
   };
-  const handelChatToggel = () => {
-    setconnectionToggel(false);
-    setGroupToggel(false);
-    setChatToggel(!chatToggel);
+  const handleChatTohhle = () => {
+    setconnectionTohhle(false);
+    setGroupTohhle(false);
+    setChatTohhle(!chatTohhle);
   };
 
   const CURRENT_USER = {
@@ -81,18 +84,18 @@ export default function Home() {
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center  ">
             <GrGroup
               className=" cursor-pointer text-gray-600 text-xl hover:text-gray-950"
-              onClick={handelGroupToggel}
+              onClick={handleGroupTohhle}
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <IoChatbubblesOutline
-              onClick={handelChatToggel}
+              onClick={handleChatTohhle}
               className=" cursor-pointer text-gray-600 text-xl  hover:text-gray-950"
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <FaRegUser
-              onClick={handelconnectionToggel}
+              onClick={handleconnectionTohhle}
               className=" cursor-pointer text-gray-600  hover:text-gray-950 text-xl"
             />
           </div>
@@ -132,11 +135,11 @@ export default function Home() {
       {/*Connection*/}
       <div
         className={` ${
-          connectionToggel ? "w-[363px] " : "w-0"
+          connectionTohhle ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100  absolute h-screen start-16 z-10 `}
       >
         <AllConnections
-          handelSearch={handelSearch}
+          handleSearch={handleSearch}
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
@@ -144,12 +147,12 @@ export default function Home() {
       {/*Groups*/}
       <div
         className={` ${
-          groupToggel ? "w-[363px] " : "w-0"
+          groupTohhle ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100  absolute h-screen start-16 z-20 `}
       >
         <Group
-          handelChat={handelChat}
-          handelSearch={handelSearch}
+          handleChat={handleChat}
+          handleSearch={handleSearch}
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
@@ -157,12 +160,12 @@ export default function Home() {
       {/*Chats */}
       <div
         className={` ${
-          chatToggel ? "w-[363px] " : "w-0"
+          chatTohhle ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100 absolute h-screen start-16 z-30 `}
       >
         <Chats
-          handelChat={handelChat}
-          handelSearch={handelSearch}
+          handleChat={handleChat}
+          handleSearch={handleSearch}
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
@@ -193,7 +196,7 @@ export default function Home() {
             <div>
               <ChatFooter
                 key={message.userId}
-                handelMessageChange={handelMessageChange}
+                handleMessageChange={handleMessageChange}
                 message={message}
               />
             </div>

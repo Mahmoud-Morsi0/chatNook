@@ -4,7 +4,7 @@ import { FaUserPen } from 'react-icons/fa6';
 import { CHATS } from '../pages/Home/mock';
 
 
-const Group = ({ handelChat,handelSearch, searchValue}) => {
+const Group = ({ handleChat,handleSearch, searchValue}) => {
 
   return (
     <div className="container flex flex-col justify-start items-center h-screen  overflow-hidden ">
@@ -23,7 +23,7 @@ const Group = ({ handelChat,handelSearch, searchValue}) => {
           id="search"
           placeholder=" Search... "
           className=" rounded-full my-2 py-1 pl-4 pr-20 text-[#1e7881] focus:outline-none focus:ring-1 focus:ring-[#1e7881] placeholder:text-[#1e7881] sm:text-sm sm:leading-6 bg-gray-300 "
-          onChange={handelSearch}
+          onChange={handleSearch}
           value={searchValue}
         />
       </div>
@@ -34,7 +34,7 @@ const Group = ({ handelChat,handelSearch, searchValue}) => {
             <div
               key={message.chatId}
               className="p-1 flex justify-center cursor-pointer  "
-              onClick={() => handelChat(message.chatId)}
+              onClick={() => handleChat(message.chatId)}
             >
               <div className=" messageage-container flex justify-between h-16 p-2 mb-1 ">
                 <div className="img-sec w-24 pt-1">

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const AllConnections = ({ handelSearch, searchValue, ALL_USERS }) => {
+const AllConnections = ({ handleSearch, searchValue, ALL_USERS }) => {
   return (
     <div className=" overflow-hidden">
       <div className=" w-full ">
@@ -11,7 +11,7 @@ const AllConnections = ({ handelSearch, searchValue, ALL_USERS }) => {
             id="search"
             placeholder=" Search... "
             className="  rounded-full my-6 ml-3 py-1 pl-4 pr-20 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 placeholder:text-gray-600 sm:text-sm sm:leading-6 bg-gray-300 "
-            onChange={handelSearch}
+            onChange={handleSearch}
             value={searchValue}
           />
         </div>

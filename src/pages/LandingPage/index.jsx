@@ -6,7 +6,7 @@ export default function LandingPage() {
   return (
     <>
       <div className="lg:container-navbar sm:w-100">
-        <div className="navbar bg-base-100 flex flex-row justify-between">
+        <div className="navbar  flex flex-row justify-between">
           <div className="lg:flex-1">
             <div className=" lg:ms-6 sm:ms-0">
               {" "}

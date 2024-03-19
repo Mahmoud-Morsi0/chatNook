@@ -8,7 +8,7 @@ import { MESSAGE, ALL_USERS } from "./mock";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
-import { getAllMessages } from './../../api/auth';
+
 
 export default function Home() {
   const date = new Date();
@@ -19,8 +19,7 @@ export default function Home() {
     userProfile = !userProfile;
     setUserProfile(userProfile);
     console.log("user profile");
-    const mess= getAllMessages()
-    console.log(mess)
+   
   };
 
   const CURRENT_USER = {

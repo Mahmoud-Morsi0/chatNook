@@ -3,28 +3,34 @@ import Home from "../pages/Home";
 import LandingPage from "../pages/LandingPage";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
-import { UserContextProvider } from "../context/UserContext";
+import { UserContextProvider, userContext } from "../context/UserContext";
 import ProductedRoute from "../ProductedRoute/ProductedRoute";
+import { useContext, useEffect } from "react";
+
 export default function Router() {
+  let { setUserToken } = useContext(userContext);
+  useEffect(() => {
+    if (localStorage.getItem("user") !== null) {
+      setUserToken(localStorage.getItem("user"));
+    }
+  }, []);
   return (
     <>
-      <UserContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/home"
-              element={
-                <ProductedRoute>
-                  <Home />
-                </ProductedRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Registration />} />
-            <Route path="/" element={<LandingPage />} />
-          </Routes>
-        </BrowserRouter>
-      </UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <ProductedRoute>
+                <Home />
+              </ProductedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

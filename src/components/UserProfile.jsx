@@ -7,11 +7,10 @@ import { userContext } from "../context/UserContext";
 export default function UserProfile({ className }) {
   let { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies(["user"]);
+
   function logOut() {
-    removeCookie("user");
+    localStorage.removeItem("user");
     setUserToken(null);
-    console.log(cookies);
     navigate("/login");
   }
 
@@ -48,7 +47,7 @@ export default function UserProfile({ className }) {
         </div>
       </div>
       <div className="w-9/12 mx-6 mb-8 flex justify-between align-middle">
-        <p className="font-bold cursor-pointer" onClick={logOut}>
+        <p className="font-bold cursor-pointer" onClick={() => logOut()}>
           logout
         </p>
         <CiLogout className="text-xl" />

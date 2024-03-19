@@ -56,10 +56,11 @@ const Registration = () => {
 
   return (
 
-      <section className="py-14 h-screen">
-        <div className="xl:grid  gap-4 lg:grid grid-cols-2">
-          <div className="left-sec  flex flex-col items-center">
-            <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+ 
+      <section className="py-14">
+        <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
+          <div className="left-sec flex  justify-center ">
+
             <img
               className="w-4/6"
               src="login img/Speech bubbles-amico 1.png"
@@ -174,7 +175,10 @@ const Registration = () => {
                   <div className="w-11/12 flex justify-center">
                     {loading ? (
                       <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <TbFidgetSpinner className="animate-spin w-6 h-6" />
+                        <TbFidgetSpinner
+                          className="animate-spin w-6 h-6"
+                          disabled={!(formik.isValid && formik.dirty)}
+                        />
                       </button>
                     ) : (
                       <button

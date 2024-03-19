@@ -1,10 +1,14 @@
 import "./App.css";
+import { UserContextProvider } from "./context/UserContext";
 import Router from "./router";
 
 function App() {
   return (
-    <div className="h-screen">
-      <Router></Router>
+    <div className="bg-white">
+      <UserContextProvider>
+        <Router></Router>
+      </UserContextProvider>
+
     </div>
   );
 }

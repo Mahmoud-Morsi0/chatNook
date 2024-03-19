@@ -5,10 +5,13 @@ import { useFormik } from "formik";
 import { login } from "../../api/auth";
 import { useState } from "react";
 import {  useCookies } from 'react-cookie'
+import { CiLogout } from 'react-icons/ci';
+import { Cookies } from 'react-cookie';
+
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [cookies, setCookie] = useCookies(['user'])
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -17,8 +20,11 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     const repsonse = await login(values);
-    setCookie('user', repsonse, { path: '/' })
-    console.log(Response)
+    setCookie('user', repsonse.data.id, { path: '/' })
+    console.log(cookies)
+    Cookies.get("user")
+    
+    // removeCookie('user') 
   };
   const {
     values,

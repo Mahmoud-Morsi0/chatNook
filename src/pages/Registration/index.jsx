@@ -161,7 +161,10 @@ const Registration = () => {
                   <div className="w-11/12 flex justify-center">
                     {loading ? (
                       <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <TbFidgetSpinner className="animate-spin w-6 h-6" />
+                        <TbFidgetSpinner
+                          className="animate-spin w-6 h-6"
+                          disabled={!(formik.isValid && formik.dirty)}
+                        />
                       </button>
                     ) : (
                       <button

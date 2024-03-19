@@ -1,10 +1,13 @@
 import "./App.css";
+import { UserContextProvider } from "./context/UserContext";
 import Router from "./router";
 
 function App() {
   return (
     <div className="bg-white">
-      <Router></Router>
+      <UserContextProvider>
+        <Router></Router>
+      </UserContextProvider>
     </div>
   );
 }

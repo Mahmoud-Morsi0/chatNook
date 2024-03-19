@@ -6,18 +6,14 @@ import { login } from "../../api/auth";
 import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import { loginSchemaValidation } from "../../schema/loginValidation";
-import { CookiesProvider, useCookies } from "react-cookie";
 import { userContext } from "../../context/UserContext";
-
 const Login = () => {
-  let { setUserToken } = useContext(userContext);
+  const { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [cookies, setCookie] = useCookies(["user"]);
-
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
@@ -28,8 +24,9 @@ const Login = () => {
       const response = await login(values);
 
       if (response.status === 200) {
-        setCookie("user", response.data.id);
-        setUserToken(response);
+        localStorage.setItem("user", response.data.id);
+        setUserToken(response.data.id);
+
         navigate("/home");
       }
     } catch (error) {
@@ -50,14 +47,11 @@ const Login = () => {
       onSubmit(values);
     },
   });
-  useEffect(() => {
-    console.log(cookies);
-  }, [cookies]);
 
   return (
     <>
       <section className="py-14">
-        <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+        <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
           <div className="left-sec flex  justify-center ">
             <img
               className="w-4/6"
@@ -163,13 +157,16 @@ const Login = () => {
                   <div className="w-11/12 flex justify-center">
                     {loading ? (
                       <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <FaSpinner className="animate-spin w-6 h-6" />
+                        <FaSpinner
+                          className="animate-spin w-6 h-6"
+                          disabled={!(formik.isValid && formik.dirty)}
+                        />
                       </button>
                     ) : (
                       <button
                         type="submit"
                         disabled={!(formik.isValid && formik.dirty)}
-                        className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
+                        className="text-white bg-cyan-800 border-2 m-auto  border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
                       >
                         log in
                       </button>

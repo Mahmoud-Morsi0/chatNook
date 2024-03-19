@@ -1,6 +1,6 @@
 import Logo from "../../components/Logo";
 import myImage from "../../assets/hero.png";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DarkMode from "./../../components/DarkMode";
 export default function LandingPage() {

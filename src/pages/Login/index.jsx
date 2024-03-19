@@ -69,14 +69,16 @@ const Login = () => {
 
   return (
     <section className="py-14">
+
       <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+
         <div className="left-sec flex  justify-center  flex-col items-center">
           <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <img
             className="w-4/6"
             src="login img/Speech bubbles-amico 1.png"
             alt="signup"
-            width="300px"
+
           />
         </div>
         <div className="right-sec">

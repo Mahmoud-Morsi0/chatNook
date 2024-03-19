@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import React, { useState, useEffect } from "react";
 import EmojiPicker from "emoji-picker-react";

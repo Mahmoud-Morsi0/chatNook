@@ -4,7 +4,7 @@ import { MdAttachFile } from "react-icons/md";
 import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
 
-const ChatFooter = ({handelMessageChange,message}) => {
+const ChatFooter = ({handleMessageChange,message}) => {
   
 
   return (
@@ -24,7 +24,7 @@ const ChatFooter = ({handelMessageChange,message}) => {
             placeholder="Text your Message..."
             rows={1}
             value={message}
-            onChange={handelMessageChange}
+            onChange={handleMessageChange}
           ></textarea>
         </div>
         <div className="ms-10 w-2/12 hover:text-orange-500 cursor-pointer  text-[#1e7887] text-2xl">

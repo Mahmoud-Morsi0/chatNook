@@ -20,7 +20,7 @@ export default function LandingPage() {
   return (
     <>
       <div className="lg:container-navbar sm:w-100">
-        <div className="navbar flex flex-row justify-between items-center">
+        <div className="navbar flex flex-row justify-evenly gap-80 items-center">
           <div>
             <div className=" lg:ms-6 sm:ms-0">
               {" "}
@@ -65,10 +65,10 @@ export default function LandingPage() {
       <div className="flex items-center justify-around mt-20">
         <div className="flex flex-col w-1/3 ">
           <h1 className="text-5xl font-bold leading-relaxed">
-            Connect friends easily <span className="text-cyan-800">&</span>{" "}
+            Connect friends easily <span className="text-cyan-800 dark">&</span>{" "}
             Quickly
           </h1>
-          <p className=" text-xl text-gray-500 mt-6 mb-10 w-3/4 leading-relaxed">
+          <p className=" text-xl text-gray-500 mt-6 mb-10 w-3/4 leading-relaxed color">
             Our chat app is the perfect way to stay connected with friends and
             family.
           </p>

@@ -59,7 +59,7 @@ const Message = () => {
                     <div className="text-sm font-bold text-gray-600">
                       {message.chatName}
                     </div>
-                    <div className="text-zinc-600 text-xs">
+                    <div className="text-zinc-400 text-xs">
                       Not too bad, just trying to catch up on some work. How
                       about you?
                     </div>

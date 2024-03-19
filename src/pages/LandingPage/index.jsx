@@ -1,21 +1,36 @@
 import Logo from "../../components/Logo";
 import myImage from "../../assets/hero.png";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import DarkMode from "./../../components/DarkMode";
 export default function LandingPage() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
   return (
     <>
       <div className="lg:container-navbar sm:w-100">
-        <div className="navbar bg-base-100 flex flex-row justify-between">
-          <div className="lg:flex-1">
+        <div className="navbar flex flex-row justify-between items-center">
+          <div>
             <div className=" lg:ms-6 sm:ms-0">
               {" "}
               <Logo></Logo>
             </div>
           </div>
+          <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <div className="flex-none gap-2">
             <Link to="/login">
-              <button className="text-cyan-800 bg-white border-2 border-cyan-800 border-solid rounded-md w-32 h-12  font-medium hover:bg-cyan-800 hover:text-white mx-4">
+              <button className="text-cyan-800 bg-white border-2 border-cyan-800 border-solid rounded-md w-32 h-12  font-medium hover:bg-cyan-800 hover:text-white mx-4 bg">
                 Login
               </button>
             </Link>
@@ -47,7 +62,7 @@ export default function LandingPage() {
         </div>
       </div> */}
 
-      <div className="flex items-center justify-around mt-20 container ms-auto">
+      <div className="flex items-center justify-around mt-20">
         <div className="flex flex-col w-1/3 ">
           <h1 className="text-5xl font-bold leading-relaxed">
             Connect friends easily <span className="text-cyan-800">&</span>{" "}

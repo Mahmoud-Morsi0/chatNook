@@ -1,13 +1,17 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
+import { CookiesProvider, useCookies } from "react-cookie";
+import DarkMode from "./../../components/DarkMode";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import { loginSchemaValidation } from "../../schema/loginValidation";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { userContext } from "../../context/UserContext";
+
 
 const Login = () => {
   let { setUserToken } = useContext(userContext);
@@ -16,6 +20,20 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies, setCookie] = useCookies(["user"]);
+   const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
@@ -53,10 +71,10 @@ const Login = () => {
   }, [cookies]);
 
   return (
-    <>
       <section className="py-14">
         <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
-          <div className="left-sec flex  justify-center ">
+          <div className="left-sec flex  justify-center  flex-col items-center">
+           <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <img
               className="w-4/6"
               src="login img/Speech bubbles-amico 1.png"
@@ -87,7 +105,6 @@ const Login = () => {
                     ""
                   )}
                 </div>
-
 
                 <div className="flex m-auto justify-center">
                   <div className="w-11/12 mb-6">
@@ -190,7 +207,6 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </>
   );
 };
 

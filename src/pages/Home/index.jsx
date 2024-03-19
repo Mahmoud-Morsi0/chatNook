@@ -2,49 +2,69 @@ import UserProfile from "../../components/UserProfile";
 import ChatFooter from "../../components/ChatFooter";
 import ChatMessage from "../../components/ChatMessage";
 import ChatHeader from "../../components/ChatHeader";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import Message from "../../components/Message";
-import DarkMode from "./../../components/DarkMode";
 import { MESSAGE, ALL_USERS } from "./mock";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
 import AllConnections from "./../../components/AllConnections";
+import Group from "../../components/Group";
+import Chats from "../../components/Chats";
+import { getAllUsers } from "../../api/auth";
 
 export default function Home() {
   const date = new Date();
   const datetext = date.getHours() + ":" + date.getMinutes();
   console.log(datetext);
-
+  const [hover, setHover] = useState(false);
+  const [message, setMessage] = useState("");
   let [userProfile, setUserProfile] = useState(false);
+  let [connectionToggel, setconnectionToggel] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  let [groupToggel, setGroupToggel] = useState(false);
+  let [chatToggel, setChatToggel] = useState(false);
+
+  const handelChat = async (id) => {
+    console.log(id);
+    const allUsers = await getAllUsers();
+    console.log(allUsers);
+  };
   const getUserProfile = () => {
     userProfile = !userProfile;
     setUserProfile(userProfile);
-    console.log("user profile");
   };
-
-  const [message, setMessage] = useState("");
 
   const handelMessageChange = (e) => {
     return setMessage(e.target.value);
   };
   console.log(message);
 
-  const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
     console.log(hover);
   };
 
-  let [connectionToggel, setconnectionToggel] = useState(false);
-  const handelconnectionToggel = () =>
-    setconnectionToggel((connectionToggel = !connectionToggel));
-
-  const [searchValue, setSearchValue] = useState("");
-  const handelConnectionSearch = (e) => {
-    setSearchValue(e.target.value);
-    console.log(searchValue);
+  const handelconnectionToggel = () => {
+    setGroupToggel(false);
+    setChatToggel(false);
+    setconnectionToggel(!connectionToggel);
   };
+  const handelSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+  console.log(searchValue);
+  const handelGroupToggel = () => {
+    setconnectionToggel(false);
+    setChatToggel(false);
+    setGroupToggel(!groupToggel);
+  };
+  const handelChatToggel = () => {
+    setconnectionToggel(false);
+    setGroupToggel(false);
+    setChatToggel(!chatToggel);
+  };
+
   const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
     userName: "ChaNook",
@@ -55,19 +75,25 @@ export default function Home() {
   return (
     <div className="flex justify-between items-center ">
       {/*Side Nave*/}
-      <div className=" relative w-20 h-screen bg- border border-gray-200 flex flex-col justify-between items-center">
+      <div className=" relative w-16 h-screen  flex flex-col justify-between items-center">
         <div className=" h-20 w-16 bg-slate-200 text-center">Logo</div>
         <div className="w-full h-32 flex flex-col justify-between items-center">
-          <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
-            <GrGroup className=" cursor-pointer text-gray-600 text-3xl hover:text-gray-950" />
+          <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center  ">
+            <GrGroup
+              className=" cursor-pointer text-gray-600 text-xl hover:text-gray-950"
+              onClick={handelGroupToggel}
+            />
           </div>
-          <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
-            <IoChatbubblesOutline className=" cursor-pointer text-gray-600 text-3xl  hover:text-gray-950" />
+          <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
+            <IoChatbubblesOutline
+              onClick={handelChatToggel}
+              className=" cursor-pointer text-gray-600 text-xl  hover:text-gray-950"
+            />
           </div>
-          <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
+          <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <FaRegUser
               onClick={handelconnectionToggel}
-              className=" cursor-pointer text-gray-600  hover:text-gray-950 text-3xl"
+              className=" cursor-pointer text-gray-600  hover:text-gray-950 text-xl"
             />
           </div>
         </div>
@@ -106,11 +132,37 @@ export default function Home() {
       {/*Connection*/}
       <div
         className={` ${
-          connectionToggel ? "w-80 " : "w-0"
-        } transition-all transition-duration: 300ms; bg-[#ffffff]  absolute h-screen start-20 z-10 `}
+          connectionToggel ? "w-[363px] " : "w-0"
+        } transition-all bg-gray-100  absolute h-screen start-16 z-10 `}
       >
         <AllConnections
-          handelSearch={handelConnectionSearch}
+          handelSearch={handelSearch}
+          searchValue={searchValue}
+          ALL_USERS={ALL_USERS}
+        />
+      </div>
+      {/*Groups*/}
+      <div
+        className={` ${
+          groupToggel ? "w-[363px] " : "w-0"
+        } transition-all bg-gray-100  absolute h-screen start-16 z-20 `}
+      >
+        <Group
+          handelChat={handelChat}
+          handelSearch={handelSearch}
+          searchValue={searchValue}
+          ALL_USERS={ALL_USERS}
+        />
+      </div>
+      {/*Chats */}
+      <div
+        className={` ${
+          chatToggel ? "w-[363px] " : "w-0"
+        } transition-all bg-gray-100 absolute h-screen start-16 z-30 `}
+      >
+        <Chats
+          handelChat={handelChat}
+          handelSearch={handelSearch}
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export default function DarkMode({ darkMode, toggleDarkMode }) {
   return (
     <label className="flex cursor-pointer gap-2 dark-mode-toggle">

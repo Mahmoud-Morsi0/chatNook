@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import React, { useState, useEffect } from "react";
 import { MdAttachFile } from "react-icons/md";
 import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";

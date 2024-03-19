@@ -21,3 +21,7 @@ export const sendMessage = (id) => {
 export const changeProfilePic = (id) => {
   return axios.patch("/user/changepic", id);
 };
+export const getUserChat = () => {
+  return axios.get(`/contacts/chats/`);
+};
+

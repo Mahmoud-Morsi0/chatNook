@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
 import { useState } from "react";
-import { CookiesProvider, useCookies } from 'react-cookie'
+import {  useCookies } from 'react-cookie'
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -18,7 +18,7 @@ const Login = () => {
     console.log(values);
     const repsonse = await login(values);
     setCookie('user', repsonse, { path: '/' })
-    console.log(response);
+    console.log(Response)
   };
   const {
     values,

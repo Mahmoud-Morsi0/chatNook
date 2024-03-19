@@ -1,7 +1,7 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { userValidationSchema } from "../../schema/shemaValidation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";

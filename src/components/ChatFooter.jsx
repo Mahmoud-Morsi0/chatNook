@@ -3,15 +3,9 @@ import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { MdAttachFile } from "react-icons/md";
 import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
-import { useState } from "react";
 
-const ChatFooter = () => {
-  const [message, setMessage] = useState("");
-
-  const handelMessageChange = (e) => {
-    return setMessage(e.target.value);
-  };
-  console.log(message);
+const ChatFooter = ({handelMessageChange,message}) => {
+  
 
   return (
     <div className=" h-16 bg-gray-100 flex items-center ">

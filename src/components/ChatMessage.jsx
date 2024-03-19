@@ -21,7 +21,7 @@ const ChatMessage = ({ CURRENT_USER, message }) => {
             <div
               className={`chat-bubble max-w-xl  ${
                 message.userId === CURRENT_USER.userId
-                  ? " bg-neutral-100  text-black"
+                  ? " bg-neutral-100  text-black bg"
                   : "bg-[#1e7887] text-white"
               } `}
             >

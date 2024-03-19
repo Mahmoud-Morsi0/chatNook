@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { userValidationSchema } from "../../schema/shemaValidation";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 import { registration } from "../../api/auth";
+import { TbFidgetSpinner } from "react-icons/tb";
+
 const Registration = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -52,15 +54,20 @@ const Registration = () => {
           </div>
           <div className="right-sec">
             <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
-              Join With Our Community
+              Hello, Welcome Back!
             </div>
             <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
-              Help you to contact everyone with just easy way
+              Happy to see you again, login first.
             </p>
             <SignWithGmailBtn />
-            <SectionBreak />
+
             <div className="form-sec mb-10 flex flex-col items-center">
               <form onSubmit={formik.handleSubmit} className="w-full max-w-md">
+                <div className=" flex justify-center">
+                  <div className="lg:w-full md:w-full w-3/4">
+                    <SectionBreak />
+                  </div>
+                </div>
                 <div className="flex m-auto justify-center">
                   {errorMessage ? (
                     <div className="alert  w-11/12 flex flex-col justify-center mb-4 text-white  bg-red-600 h-8">
@@ -154,7 +161,7 @@ const Registration = () => {
                   <div className="w-11/12 flex justify-center">
                     {loading ? (
                       <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <AiOutlineLoading3Quarters className="animate-spin w-6 h-6" />
+                        <TbFidgetSpinner className="animate-spin w-6 h-6" />
                       </button>
                     ) : (
                       <button

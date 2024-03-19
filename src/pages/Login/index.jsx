@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
 import { useState } from "react";
-import {  useCookies } from 'react-cookie'
-import { CiLogout } from 'react-icons/ci';
-import { Cookies } from 'react-cookie';
-
+import { useCookies } from "react-cookie";
+import { Cookies } from "react-cookie";
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -20,11 +18,11 @@ const Login = () => {
   const onSubmit = async (values) => {
     console.log(values);
     const repsonse = await login(values);
-    setCookie('user', repsonse.data.id, { path: '/' })
-    console.log(cookies)
-    Cookies.get("user")
-    
-    // removeCookie('user') 
+    setCookie("user", repsonse.data.id, { path: "/" });
+    console.log(cookies);
+    Cookies.get("user");
+
+    // removeCookie('user')
   };
   const {
     values,
@@ -119,13 +117,13 @@ const Login = () => {
                 </label>
               </div>
               <div className="flex justify-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className=" text-center text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
-              >
-                Login
-              </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className=" text-center text-white bg-cyan-800 border-2 border-cyan-800 border-solid rounded-md w-64 h-12 font-medium hover:bg-white hover:text-cyan-800 mx-4"
+                >
+                  Login
+                </button>
               </div>
             </form>
           </div>

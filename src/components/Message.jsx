@@ -18,8 +18,8 @@ const Message = () => {
 
   return (
     <>
-      <div className="container flex flex-col justify-start border border-[#1e77872c] h-screen ">
-        <div className="flex justify-between items-center pe-7 ps-3">
+      <div className="container flex flex-col justify-start items-center border border-[#1e77872c] h-screen ">
+        <div className="w-full flex justify-between items-center pe-7 ps-3">
         <div className=" text-gray-500">
           <h2 className="">Messages</h2>
         </div>
@@ -39,12 +39,12 @@ const Message = () => {
           />
         </div>
 
-        <div className="overflow-y-scroll h-fit p-1">
+        <div className="overflow-y-scroll h-fit p-1 sm:h-screen">
           {CHATS.map((message) => {
             return (
               <div
                 key={message.chatId}
-                className="p-1 flex justify-center cursor-pointer "
+                className="p-1 flex justify-center cursor-pointer  "
                 onClick={() => handelChat(message.chatId)}
               >
                 <div className=" messageage-container flex justify-between h-16 p-2 mb-1 ">

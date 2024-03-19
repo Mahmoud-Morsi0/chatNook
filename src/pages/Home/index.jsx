@@ -9,19 +9,30 @@ import { IoChatbubblesOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
 
-
 export default function Home() {
   const date = new Date();
   const datetext = date.getHours() + ":" + date.getMinutes();
   console.log(datetext);
+
   let [userProfile, setUserProfile] = useState(false);
   const getUserProfile = () => {
     userProfile = !userProfile;
     setUserProfile(userProfile);
     console.log("user profile");
-   
   };
 
+  const [message, setMessage] = useState("");
+
+  const handelMessageChange = (e) => {
+    return setMessage(e.target.value);
+  };
+  console.log(message);
+
+  const [hover, setHover] = useState(false);
+  const onHover = () => {
+    setHover(!hover);
+    console.log(hover)
+  };
   const CURRENT_USER = {
     avatar: "https://docs.material-tailwind.com/img/face-2.jpg",
     userName: "ChaNook",
@@ -42,7 +53,7 @@ export default function Home() {
             <IoChatbubblesOutline className=" cursor-pointer text-gray-600 text-3xl  hover:text-gray-950" />
           </div>
           <div className=" w-full h-10 rounded-md hover:bg-gray-200 flex justify-center items-center ">
-            <FaRegUser  className=" cursor-pointer text-gray-600  hover:text-gray-950 text-3xl" />
+            <FaRegUser className=" cursor-pointer text-gray-600  hover:text-gray-950 text-3xl" />
           </div>
         </div>
         <div className="flex flex-col justify-center items-center">
@@ -82,7 +93,7 @@ export default function Home() {
         <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
           {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} />}
         </div>
-        <div className="md:w-9/12 sm:w-screen flex flex-col justify-between">
+        <div className="md:w-9/12 sm:w-screen h-screen flex flex-col justify-between">
           <div>
             <ChatHeader
               user={MESSAGE}
@@ -96,10 +107,15 @@ export default function Home() {
                 key={CURRENT_USER.userId}
                 CURRENT_USER={CURRENT_USER}
                 message={MESSAGE}
+                onHover={onHover}
               />
             </div>
             <div>
-              <ChatFooter />
+              <ChatFooter
+              key={message.userId}
+                handelMessageChange={handelMessageChange}
+                message={message}
+              />
             </div>
           </div>
         </div>

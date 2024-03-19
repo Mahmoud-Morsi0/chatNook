@@ -44,7 +44,7 @@ const Registration = () => {
   return (
     <>
       <section className="py-14">
-        <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+        <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
           <div className="left-sec flex  justify-center ">
             <img
               className="w-4/6"

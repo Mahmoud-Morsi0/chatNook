@@ -34,8 +34,8 @@ const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
             <img src={CURRENT_USER.avatar} onClick={getUserProfile} />
           </div>
         </div>
-        <div className=" flex flex-col justify-center   align-middle">
-          <div className=" mt-5 ms-3 font-semibold text-lg">
+        <div className=" ">
+          <div className=" font-semibold text-lg">
             {CURRENT_USER.userName}
           </div>
           <div className="text-xs ms-3">

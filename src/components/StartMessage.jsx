@@ -1,4 +1,3 @@
-import React from "react";
 import myImage from "../assets/Group Chat-amico 1.png";
 
 export default function StartMessage() {

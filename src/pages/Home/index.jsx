@@ -129,7 +129,7 @@ export default function Home() {
       <div
         className={` ${
           connectionToggel ? "w-[363px]" : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-16 z-10 `}
+        } transition-all bg-gray-100  absolute h-screen start-[123px] z-10 `}
       >
         <AllConnections
           ALL_USERS={allUsers}
@@ -140,7 +140,7 @@ export default function Home() {
       <div
         className={` ${
           groupToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-16 z-20 `}
+        } transition-all bg-gray-100  absolute h-screen start-[123px] z-20 `}
       >
         <Group handelChat={handelChat} allGroups={allGroups} />
       </div>
@@ -148,7 +148,7 @@ export default function Home() {
       <div
         className={` ${
           chatToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100 absolute h-screen start-16 z-30 `}
+        } transition-all bg-gray-100 absolute h-screen start-[123px] z-30 `}
       >
         <Chats
           handelChat={handelChat}

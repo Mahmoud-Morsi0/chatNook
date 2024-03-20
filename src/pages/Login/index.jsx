@@ -3,7 +3,7 @@ import SectionBreak from "../../components/SectionBreak";
 import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
-import DarkMode from "./../../components/DarkMode";
+import   DarkMode from "./../../components/DarkMode";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FaSpinner } from "react-icons/fa6";
@@ -39,6 +39,7 @@ const Login = () => {
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
+        setUserToken(response);
         navigate("/home");
       }
     } catch (error) {

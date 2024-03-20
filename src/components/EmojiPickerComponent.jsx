@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import EmojiPicker from "emoji-picker-react";
 
 const EmojiPickerComponent = ({ onEmojiClick }) => {

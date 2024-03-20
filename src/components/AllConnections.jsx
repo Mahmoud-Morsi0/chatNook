@@ -45,6 +45,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
       const data = {
         chatName,
         participants,
+        isGroup:true,
       };
       const response = await createGroup(data);
       onCreateGroup();

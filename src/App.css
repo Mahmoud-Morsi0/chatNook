@@ -19,5 +19,8 @@
   color: white;
 }
 .dark-mode .color {
-  color: #eeeeee;
+  color: #e0e0e0;
+}
+.dark-mode .dark {
+  color: #6695a0;
 }

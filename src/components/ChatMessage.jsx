@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { IoCheckmark } from "react-icons/io5";
 import { IoCheckmarkDone } from "react-icons/io5";
-import { RiDeleteBinLine } from "react-icons/ri";
+// import { RiDeleteBinLine } from "react-icons/ri";
 
-const ChatMessage = ({ CURRENT_USER, message,onHover }) => {
-  
+const ChatMessage = ({ CURRENT_USER, message, onHover }) => {
   return (
     <div className="mb-4 px-3 h-[460px] overflow-y-scroll">
       {message.map((message) => {
@@ -36,16 +35,19 @@ const ChatMessage = ({ CURRENT_USER, message,onHover }) => {
               >
                 {message.name}
               </div>
-              <div 
-              className="text-xs"
-              onMouseEnter={onHover}
-              onMouseLeave={onHover}
+              <div
+                className="text-xs"
+                // onMouseEnter={onHover}
+                // onMouseLeave={onHover}
               >
                 {message.text}
-                <div className="w-2 ms-auto">
-
-              {onHover?<RiDeleteBinLine className="text-red-800 text-lg hover:text-red-600 mt-1" />:""}
-                </div>
+                {/* <div className="w-2 ms-auto">
+                  {onHover ? (
+                    <RiDeleteBinLine className="text-red-800 text-lg hover:text-red-600 mt-1" />
+                  ) : (
+                    ""
+                  )}
+                </div> */}
               </div>
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-900">
@@ -55,7 +57,6 @@ const ChatMessage = ({ CURRENT_USER, message,onHover }) => {
                 <IoCheckmarkDone className="mx-1 inline-block text-green-600" />
               )}
               {message.date}
-
             </div>
           </div>
         );

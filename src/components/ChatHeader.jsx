@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { GrStatusGoodSmall } from "react-icons/gr";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import DarkMode from "./DarkMode";
 
 const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
@@ -35,9 +35,7 @@ const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
           </div>
         </div>
         <div className=" ">
-          <div className=" font-semibold text-lg">
-            {CURRENT_USER.userName}
-          </div>
+          <div className=" font-semibold text-lg">{CURRENT_USER.userName}</div>
           <div className="text-xs ms-3">
             <GrStatusGoodSmall className=" text-green-600 inline-block" />
             {CURRENT_USER.status}

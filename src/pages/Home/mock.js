@@ -256,3 +256,43 @@ export const CHATS = [
     messages: [],
   },
 ];
+export const GET_USER_CHAT = [
+  {
+    _id: "65f8d1740c2b2342b9d75865",
+    participants: [
+      {
+        _id: "65f8be68c780a42b3701ca38",
+        fullName: "Hagar Saleh",
+        email: "hager@gmail.com",
+        profilePic: "https://i.ibb.co/xhbZ5fQ/download.png",
+        createdAt: "2024-03-18T22:21:29.007Z",
+        updatedAt: "2024-03-18T22:21:29.007Z",
+        __v: 0,
+        id: "65f8be68c780a42b3701ca38",
+      },
+      {
+        _id: "65f77c79c13677f0895d0674",
+        fullName: "Abdalrahman Gomaa",
+        email: "abdo@gmail.com",
+        profilePic: "https://i.ibb.co/xhbZ5fQ/download.png",
+        createdAt: "2024-03-17T23:27:53.486Z",
+        updatedAt: "2024-03-17T23:27:53.486Z",
+        __v: 0,
+        id: "65f77c79c13677f0895d0674",
+      },
+    ],
+    lastMessage: {
+      _id: "65f8d1980c2b2342b9d75871",
+      senderId: "65f8be68c780a42b3701ca38",
+      recieverId: "65f77c79c13677f0895d0674",
+      chatId: "65f8d1740c2b2342b9d75865",
+      message: "this is new to you",
+      createdAt: "2024-03-18T23:43:21.146Z",
+      updatedAt: "2024-03-18T23:43:21.146Z",
+      __v: 0,
+      id: "65f8d1980c2b2342b9d75871",
+    },
+    createdAt: "2024-03-18T23:42:44.167Z",
+    updatedAt: "2024-03-18T23:43:20.990Z",
+  },
+];

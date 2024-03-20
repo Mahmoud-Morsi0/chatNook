@@ -7,6 +7,7 @@ const axiosRequest = axios.create({
   // timeout: 10000,
   headers: {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 });
 
@@ -14,6 +15,8 @@ const axiosRequest = axios.create({
 
 const requestHandler = (request) => {
   //All Our request Handler in all calls.
+  request.headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+
   return request;
 };
 

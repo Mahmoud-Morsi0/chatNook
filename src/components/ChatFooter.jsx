@@ -4,9 +4,7 @@ import { MdAttachFile } from "react-icons/md";
 import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
 
-const ChatFooter = ({handleMessageChange,message}) => {
-  
-
+const ChatFooter = ({ handelMessageChange, message }) => {
   return (
     <div className=" h-16 bg-gray-100 flex items-center bg ">
       <div className=" w-full flex justify-between items-center">
@@ -24,7 +22,7 @@ const ChatFooter = ({handleMessageChange,message}) => {
             placeholder="Text your Message..."
             rows={1}
             value={message}
-            onChange={handleMessageChange}
+            onChange={handelMessageChange}
           ></textarea>
         </div>
         <div className="ms-10 w-2/12 hover:text-orange-500 cursor-pointer  text-[#1e7887] text-2xl">

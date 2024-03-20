@@ -1,22 +1,21 @@
 /* eslint-disable react/prop-types */
 import { CiLogout } from "react-icons/ci";
-import { useCookies} from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { userContext } from "../context/UserContext";
 export default function UserProfile({ className }) {
   let { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
-
   function logOut() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+
     setUserToken(null);
     navigate("/login");
   }
 
   return (
     <div
-      className={` z-50 p-3 border border-[#1e77872c] h-screen flex flex-col justify-between text-gray-600 ${className}`}
+      className={`p-3 border border-[#1e77872c] h-screen flex flex-col justify-between text-gray-600 ${className}`}
     >
       <div>
         <div className="flex flex-col items-center ">

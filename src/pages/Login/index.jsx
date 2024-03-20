@@ -3,7 +3,6 @@ import SectionBreak from "../../components/SectionBreak";
 import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
-import { useCookies } from "react-cookie";
 import DarkMode from "./../../components/DarkMode";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -16,10 +15,7 @@ const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const [cookies, setCookie] = useCookies(["user"]);
   const [darkMode, setDarkMode] = useState(false);
-
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
@@ -42,9 +38,7 @@ const Login = () => {
       const response = await login(values);
 
       if (response.status === 200) {
-        localStorage.setItem("user", response.data.id);
-        setUserToken(response.data.id);
-
+        localStorage.setItem("token", response.data.token);
         navigate("/home");
       }
     } catch (error) {

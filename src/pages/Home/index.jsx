@@ -2,7 +2,7 @@ import UserProfile from "../../components/UserProfile";
 import ChatFooter from "../../components/ChatFooter";
 import ChatMessage from "../../components/ChatMessage";
 import ChatHeader from "../../components/ChatHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Message from "../../components/Message";
 import { MESSAGE, ALL_USERS } from "./mock";
 import { IoChatbubblesOutline } from "react-icons/io5";
@@ -11,7 +11,7 @@ import { GrGroup } from "react-icons/gr";
 import AllConnections from "./../../components/AllConnections";
 import Group from "../../components/Group";
 import Chats from "../../components/Chats";
-import { getAllUsers } from "../../api/auth";
+import { getAllUsers, getAllGroups } from "../../api/messages";
 
 export default function Home() {
   const date = new Date();
@@ -20,52 +20,62 @@ export default function Home() {
   const [hover, setHover] = useState(false);
   const [message, setMessage] = useState("");
   let [userProfile, setUserProfile] = useState(false);
-  let [connectionTohhle, setconnectionTohhle] = useState(false);
+  const [connectionToggel, setconnectionToggel] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  let [groupTohhle, setGroupTohhle] = useState(false);
-  let [chatTohhle, setChatTohhle] = useState(false);
+  const [groupToggel, setGroupToggel] = useState(false);
+  const [chatToggel, setChatToggel] = useState(false);
+  const [allUsers, setAllUsers] = useState([]);
+  const [allGroups, setAllGroups] = useState([]);
 
-  const handleChat = async (id) => {
+  const handelChat = async (id) => {
     console.log(id);
-    const allUsers = await getAllUsers();
-    console.log(allUsers);
   };
+
+  const getAllUsersHandler = async () => {
+    const { data } = await getAllUsers();
+    setAllUsers(data);
+  };
+
+  const getAllGroupsHandler = async () => {
+    const { data } = await getAllGroups();
+    setAllGroups(data);
+  };
+
+  useEffect(() => {
+    getAllUsersHandler();
+    getAllGroupsHandler();
+  }, [allUsers, allGroups]);
+
   const getUserProfile = () => {
     userProfile = !userProfile;
-    setGroupTohhle(false);
-    setChatTohhle(false);
-    setconnectionTohhle(false);
     setUserProfile(userProfile);
   };
 
-  const handleMessageChange = (e) => {
+  const handelMessageChange = (e) => {
     return setMessage(e.target.value);
   };
-  console.log(message);
 
   const onHover = () => {
     setHover(!hover);
-    console.log(hover);
   };
 
-  const handleconnectionTohhle = () => {
-    setGroupTohhle(false);
-    setChatTohhle(false);
-    setconnectionTohhle(!connectionTohhle);
+  const handelconnectionToggel = () => {
+    setGroupToggel(false);
+    setChatToggel(false);
+    setconnectionToggel(!connectionToggel);
   };
-  const handleSearch = (e) => {
+  const handelSearch = (e) => {
     setSearchValue(e.target.value);
   };
-  console.log(searchValue);
-  const handleGroupTohhle = () => {
-    setconnectionTohhle(false);
-    setChatTohhle(false);
-    setGroupTohhle(!groupTohhle);
+  const handelGroupToggel = () => {
+    setconnectionToggel(false);
+    setChatToggel(false);
+    setGroupToggel(!groupToggel);
   };
-  const handleChatTohhle = () => {
-    setconnectionTohhle(false);
-    setGroupTohhle(false);
-    setChatTohhle(!chatTohhle);
+  const handelChatToggel = () => {
+    setconnectionToggel(false);
+    setGroupToggel(false);
+    setChatToggel(!chatToggel);
   };
 
   const CURRENT_USER = {
@@ -75,27 +85,31 @@ export default function Home() {
     status: "Active",
   };
 
+  const createGroupHandler = async () => {
+    handelGroupToggel();
+  };
+
   return (
     <div className="flex justify-between items-center ">
       {/*Side Nave*/}
       <div className=" relative w-16 h-screen  flex flex-col justify-between items-center">
-        <div className=" h-20 w-16 bg-slate-200 text-center">Logo</div>
+        <div className="h-20 w-16 bg-slate-200 text-center">Logo</div>
         <div className="w-full h-32 flex flex-col justify-between items-center">
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center  ">
             <GrGroup
               className=" cursor-pointer text-gray-600 text-xl hover:text-gray-950"
-              onClick={handleGroupTohhle}
+              onClick={handelGroupToggel}
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <IoChatbubblesOutline
-              onClick={handleChatTohhle}
+              onClick={handelChatToggel}
               className=" cursor-pointer text-gray-600 text-xl  hover:text-gray-950"
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <FaRegUser
-              onClick={handleconnectionTohhle}
+              onClick={handelconnectionToggel}
               className=" cursor-pointer text-gray-600  hover:text-gray-950 text-xl"
             />
           </div>
@@ -135,37 +149,31 @@ export default function Home() {
       {/*Connection*/}
       <div
         className={` ${
-          connectionTohhle ? "w-[363px] " : "w-0"
+          connectionToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100  absolute h-screen start-16 z-10 `}
       >
         <AllConnections
-          handleSearch={handleSearch}
-          searchValue={searchValue}
-          ALL_USERS={ALL_USERS}
+          ALL_USERS={allUsers}
+          onCreateGroup={createGroupHandler}
         />
       </div>
       {/*Groups*/}
       <div
         className={` ${
-          groupTohhle ? "w-[363px] " : "w-0"
+          groupToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100  absolute h-screen start-16 z-20 `}
       >
-        <Group
-          handleChat={handleChat}
-          handleSearch={handleSearch}
-          searchValue={searchValue}
-          ALL_USERS={ALL_USERS}
-        />
+        <Group handelChat={handelChat} allGroups={allGroups} />
       </div>
       {/*Chats */}
       <div
         className={` ${
-          chatTohhle ? "w-[363px] " : "w-0"
+          chatToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100 absolute h-screen start-16 z-30 `}
       >
         <Chats
-          handleChat={handleChat}
-          handleSearch={handleSearch}
+          handelChat={handelChat}
+          handelSearch={handelSearch}
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
@@ -196,7 +204,7 @@ export default function Home() {
             <div>
               <ChatFooter
                 key={message.userId}
-                handleMessageChange={handleMessageChange}
+                handelMessageChange={handelMessageChange}
                 message={message}
               />
             </div>

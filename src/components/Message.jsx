@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { CHATS } from "../pages/Home/mock";
-import { getAllUsers } from "../api/auth";
-import { FaUserPen } from "react-icons/fa6";
+import { getAllUsers } from "../api/messages";
 
 const Message = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -9,7 +8,7 @@ const Message = () => {
     setSearchValue(e.target.value);
     console.log(searchValue);
   };
-  
+
   const handelChat = async (id) => {
     console.log(id);
     const allUsers = await getAllUsers();
@@ -17,13 +16,12 @@ const Message = () => {
   };
 
   return (
-    <div className="container flex flex-col justify-start items-center border border-[#1e77872c] h-screen ">
+    <div className="container flex flex-col justify-start items-center border border-[#1e77872c] h-screen">
       <div className="w-full flex justify-between items-center pe-7 ps-3">
         <div className=" text-gray-500">
-          <h2 className="">Messages</h2>
+          <h1 className=" font-sans my-3 font-bold text-3xl ">Messages</h1>
         </div>
         <div className=" text-gray-600">
-          <FaUserPen className="text-xl cursor-pointer" />
         </div>
       </div>
       <div className="w-full m-auto p-1 h-10 mb-4">

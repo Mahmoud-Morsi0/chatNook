@@ -35,12 +35,12 @@ export default function Home() {
   const getAllUsersHandler = async () => {
     const { data } = await getAllUsers();
     setAllUsers(data);
-  }
+  };
 
   const getAllGroupsHandler = async () => {
     const { data } = await getAllGroups();
     setAllGroups(data);
-  }
+  };
 
   useEffect(() => {
     getAllUsersHandler();
@@ -93,27 +93,27 @@ export default function Home() {
   return (
     <div className="flex justify-between items-center ">
       {/*Side Nave*/}
-      <div className=" relative w-40 h-screen  flex flex-col justify-between items-center">
+      <div className=" relative w-28 h-screen  flex flex-col justify-between items-center">
         <div>
           <Logo />
         </div>
-        <div className="w-full h-40 flex flex-col justify-between items-center">
+        <div className="w-full h-44 flex flex-col justify-between items-center">
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center  ">
             <GrGroup
-              className=" cursor-pointer text-gray-500 color text-xl hover:text-gray-950"
+              className=" cursor-pointer text-gray-500 color text-2xl hover:text-gray-950"
               onClick={handelGroupToggel}
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <IoChatbubblesOutline
               onClick={handelChatToggel}
-              className=" cursor-pointer color text-gray-500 text-xl  hover:text-gray-950"
+              className=" cursor-pointer color text-gray-500 text-2xl  hover:text-gray-950"
             />
           </div>
           <div className=" w-4/6 h-10 rounded-md hover:bg-gray-100 flex justify-center items-center ">
             <FaRegUser
               onClick={handelconnectionToggel}
-              className=" cursor-pointer text-gray-500  color hover:text-gray-950 text-xl"
+              className=" cursor-pointer text-gray-500  color hover:text-gray-950 text-2xl"
             />
           </div>
         </div>

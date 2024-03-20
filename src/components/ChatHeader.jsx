@@ -29,14 +29,14 @@ const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
       style={headerStyle}
     >
       <div className=" w-36  flex justify-between align-middle">
-        <div className="chat-image avatar mt-3 ms-5">
+        <div className="chat-image avatar ml-8 mr-4">
           <div className="w-10 rounded-full cursor-pointer">
             <img src={CURRENT_USER.avatar} onClick={getUserProfile} />
           </div>
         </div>
         <div className=" ">
           <div className=" font-semibold text-lg">{CURRENT_USER.userName}</div>
-          <div className="text-xs ms-3">
+          <div className="text-sm ">
             <GrStatusGoodSmall className=" text-green-600 inline-block" />
             {CURRENT_USER.status}
           </div>

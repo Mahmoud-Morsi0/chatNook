@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import { loginSchemaValidation } from "../../schema/loginValidation";
-import { CookiesProvider, useCookies } from "react-cookie";
 import { userContext } from "../../context/UserContext";
 
 const Login = () => {
@@ -64,7 +63,7 @@ const Login = () => {
 
   return (
     <section className="py-14">
-      <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+      <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
         <div className="left-sec flex  justify-center  flex-col items-center">
           <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <img

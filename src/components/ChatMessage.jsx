@@ -20,14 +20,14 @@ const ChatMessage = ({ CURRENT_USER, message, onHover }) => {
               </div>
             </div>
             <div
-              className={`chat-bubble max-w-xl  ${
+              className={`chat-bubble max-w-xl h-20 ps-4 py-4 ${
                 message.userId === CURRENT_USER.userId
                   ? " bg-neutral-100  text-black bg"
                   : "bg-[#1e7887] text-white"
               } `}
             >
               <div
-                className={`text-xs ${
+                className={`text-xs pb-2 ${
                   message.userId === CURRENT_USER.userId
                     ? "text-orange-600"
                     : " text-orange-400"

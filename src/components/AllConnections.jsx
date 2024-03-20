@@ -58,9 +58,9 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
 
   return (
     <div className="overflow-x-hidden shadow-sm">
-      <div className="flex flex-col justify-center items-center h-[650px] ">
-      <div className=" text-gray-500 w-full px-4 mb-2 ">
-          <h1 className=" font-sans  font-bold text-3xl ">Contacts</h1>
+      <div className="flex flex-col justify-center bg items-center h-full ">
+        <div className=" text-gray-500 w-full px-4 mb-2 ">
+          <h1 className=" font-sans color font-bold mt-5 text-l ">Contacts</h1>
         </div>
         <div className="w-full mb-4">
           <div className="shadow-md ">
@@ -69,7 +69,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
               name="search"
               id="search"
               placeholder=" Search... "
-              className="m-auto rounded-full mb-4 ml-3 py-1 pl-4 pr-20 text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-500 placeholder:text-gray-800 sm:text-sm sm:leading-6 bg-[#1e77873b]"
+              className="m-auto rounded-full mb-4 ml-3 py-1 pl-4 bg pr-20 text-gray-700 border focus:outline-none focus:ring-1 focus:ring-gray-500  sm:text-sm sm:leading-6 bg-[#1e77873b]"
               onChange={(e) => setSearchedUser(e.target.value)}
               value={searchedUser}
             />
@@ -88,7 +88,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
                     <div className="w-10 rounded-full ring-2 ring-[#1E7887] ring-offset-gray-100 ">
                       <img src={user.profilePic} />
                     </div>
-                    <span className="text-gray ml-2 text-gray-600 ">
+                    <span className="text-gray ml-2 color text-gray-600 mt-2 ">
                       {user.fullName}
                     </span>
                   </div>
@@ -98,7 +98,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
                         type="checkbox"
                         checked={participants.includes(user.id)}
                         onChange={() => checkUserHandler(user.id)}
-                        className="checkbox w-4 h-4 checkbox-success"
+                        className="checkbox w-4 h-4 checkbox-success dark"
                       />
                     </label>
                   </div>
@@ -107,10 +107,10 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
             })}
         </div>
         {participants && participants.length > 0 && (
-          <div className="flex flex-col w-full p-5 gap-4 h-40 ">
+          <div className="flex flex-col w-full p-3 gap-4 h-40 ">
             <label
               htmlFor="chatName"
-              className="block  text-sm ml-3 font-medium leading-6 text-gray-900"
+              className="block  text-sm ml-3 font-medium leading-6 color text-gray-900"
             >
               {" "}
               Chat Name - {participants.length} Users
@@ -126,7 +126,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
             <button
               type="submit"
               disabled={chatName.length === 0}
-              className="text-white cursor-pointer bg-cyan-800  border-2 m-auto border-cyan-800 border-solid rounded-md btn w-5/6 mt-3 font-medium hover:bg-white hover:text-cyan-800 disabled:text-gray-600"
+              className="text-white cursor-pointer bg-cyan-800  mb-2 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-5/6  font-medium hover:bg-white hover:text-cyan-800 disabled:text-gray-600"
               onClick={createGroupHandler}
             >
               Create group

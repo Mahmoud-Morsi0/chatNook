@@ -183,7 +183,6 @@ const Registration = () => {
                       Sign up
                     </button>
                   )}
-
                 </div>
               </div>
             </form>

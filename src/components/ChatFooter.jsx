@@ -1,6 +1,5 @@
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import React, { useState, useEffect } from "react";
-import EmojiPicker from "emoji-picker-react";
+import { useState} from "react";
 import { MdAttachFile } from "react-icons/md";
 import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
@@ -18,9 +17,11 @@ const ChatFooter = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const handleEmojiClick = (event, emojiObject) => {
-    handleMessageChange(message + emojiObject.emoji);
-    console.log(emojiobject.emoji);
+  const handleEmojiClick = (event) => {
+    console.log(event.emoji);
+    handleMessageChange(message + event.emoji);
+    setMessage(message + event.emoji)
+    // console.log(emojiObject.target);
   };
   return (
     <div className=" h-16 bg-gray-100 flex items-center bg ">

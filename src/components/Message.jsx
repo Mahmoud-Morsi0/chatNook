@@ -9,11 +9,11 @@ const Message = () => {
     console.log(searchValue);
   };
 
-  // const handelChat = async (id) => {
-  //   console.log(id);
-  //   const allUsers = await getAllUsers();
-  //   console.log(allUsers);
-  // };
+  const handelChat = async (id) => {
+    console.log(id);
+    const allUsers = await getAllUsers();
+    console.log(allUsers);
+  };
 
   return (
     <div className="container flex flex-col justify-start items-center border border-[#1e77872c] h-screen">

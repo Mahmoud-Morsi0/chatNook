@@ -20,7 +20,7 @@ const ChatFooter = () => {
 
   const handleEmojiClick = (event, emojiObject) => {
     handleMessageChange(message + emojiObject.emoji);
-    console.log(emojiobject.emoji);
+    console.log(emojiObject.emoji);
   };
   return (
     <div className=" h-16 bg-gray-100 flex items-center bg ">

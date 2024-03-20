@@ -64,16 +64,13 @@ const Login = () => {
 
   return (
     <section className="py-14">
-
       <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
-
         <div className="left-sec flex  justify-center  flex-col items-center">
           <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <img
             className="w-4/6"
             src="login img/Speech bubbles-amico 1.png"
             alt="signup"
-
           />
         </div>
         <div className="right-sec">
@@ -93,7 +90,7 @@ const Login = () => {
               </div>
               <div className="flex m-auto justify-center">
                 {errorMessage ? (
-                  <div className="alert  w-11/12 flex flex-col justify-center mb-4 text-white  bg-red-600 h-8">
+                  <div className="alert w-11/12 flex flex-col justify-center mb-4 text-white bg-red-600 h-8">
                     {errorMessage}
                   </div>
                 ) : (
@@ -157,7 +154,7 @@ const Login = () => {
               </div>
               <div className="flex m-auto justify-center">
                 <div className="w-11/12 mb-3">
-                  <label className=" text-gray-600">
+                  <label className="text-gray-600">
                     <input
                       type="checkbox"
                       checked={isChecked}
@@ -168,26 +165,24 @@ const Login = () => {
                   </label>
                 </div>
               </div>
-                <div className="flex m-auto justify-center">
-                  <div className="w-11/12 flex justify-center">
-                    {loading ? (
-                      <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <FaSpinner
-                          className="animate-spin w-6 h-6"
-                          disabled={!(formik.isValid && formik.dirty)}
-                        />
-                      </button>
-                    ) : (
-                      <button
-                        type="submit"
+              <div className="flex m-auto justify-center">
+                <div className="w-11/12 flex justify-center">
+                  {loading ? (
+                    <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 ">
+                      <FaSpinner
+                        className="animate-spin w-6 h-6"
                         disabled={!(formik.isValid && formik.dirty)}
-                        className="text-white bg-cyan-800 border-2 m-auto  border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
-                      >
-                        log in
-                      </button>
-                    )}
-                  </div>
-
+                      />
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={!(formik.isValid && formik.dirty)}
+                      className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
+                    >
+                      Log in
+                    </button>
+                  )}
                 </div>
               </div>
             </form>

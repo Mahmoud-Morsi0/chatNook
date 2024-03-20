@@ -1,13 +1,13 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
-import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
-import   DarkMode from "./../../components/DarkMode";
+import DarkMode from "./../../components/DarkMode";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import { loginSchemaValidation } from "../../schema/loginValidation";
+import { CookiesProvider, useCookies } from "react-cookie";
 import { userContext } from "../../context/UserContext";
 
 const Login = () => {
@@ -63,16 +63,22 @@ const Login = () => {
   });
 
   return (
-    <>
-      <section className="py-14">
-        <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
-          <div className="left-sec flex  justify-center ">
-            <img
-              className="w-4/6"
-              src="login img/Speech bubbles-amico 1.png"
-              alt="signup"
-            />
+    <section className="py-14">
 
+      <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+
+        <div className="left-sec flex  justify-center  flex-col items-center">
+          <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <img
+            className="w-4/6"
+            src="login img/Speech bubbles-amico 1.png"
+            alt="signup"
+
+          />
+        </div>
+        <div className="right-sec">
+          <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
+            Join With Our Community
           </div>
           <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
             Help you to contact everyone with just easy way

@@ -8,6 +8,7 @@ export default function UserProfile({ className }) {
   const navigate = useNavigate();
   function logOut() {
     localStorage.removeItem("token");
+
     setUserToken(null);
     navigate("/login");
   }
@@ -45,7 +46,7 @@ export default function UserProfile({ className }) {
         </div>
       </div>
       <div className="w-9/12 mx-6 mb-8 flex justify-between align-middle">
-        <p className="font-bold cursor-pointer" onClick={logOut}>
+        <p className="font-bold cursor-pointer" onClick={() => logOut()}>
           logout
         </p>
         <CiLogout className="text-xl" />

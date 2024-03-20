@@ -16,7 +16,6 @@ import { getAllUsers, getAllGroups } from "../../api/messages";
 export default function Home() {
   const date = new Date();
   const datetext = date.getHours() + ":" + date.getMinutes();
-  console.log(datetext);
   const [hover, setHover] = useState(false);
   const [message, setMessage] = useState("");
   let [userProfile, setUserProfile] = useState(false);
@@ -34,12 +33,12 @@ export default function Home() {
   const getAllUsersHandler = async () => {
     const { data } = await getAllUsers();
     setAllUsers(data);
-  };
+  }
 
   const getAllGroupsHandler = async () => {
     const { data } = await getAllGroups();
     setAllGroups(data);
-  };
+  }
 
   useEffect(() => {
     getAllUsersHandler();

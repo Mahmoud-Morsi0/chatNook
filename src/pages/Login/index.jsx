@@ -1,14 +1,15 @@
 import SignWithGmailBtn from "../../components/SigninWithGoogle";
 import SectionBreak from "../../components/SectionBreak";
-import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { login } from "../../api/auth";
-import   DarkMode from "./../../components/DarkMode";
+import DarkMode from "./../../components/DarkMode";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
 import { loginSchemaValidation } from "../../schema/loginValidation";
+import { CookiesProvider, useCookies } from "react-cookie";
 import { userContext } from "../../context/UserContext";
+
 const Login = () => {
   const { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
@@ -62,16 +63,19 @@ const Login = () => {
   });
 
   return (
-    <>
-      <section className="py-14">
-        <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
-          <div className="left-sec flex  justify-center ">
-            <img
-              className="w-4/6"
-              src="login img/Speech bubbles-amico 1.png"
-              alt="signup"
-            />
-
+    <section className="py-14">
+      <div className="xl:grid grid-cols-2 gap-4 lg:grid grid-cols-1">
+        <div className="left-sec flex  justify-center  flex-col items-center">
+          <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <img
+            className="w-4/6"
+            src="login img/Speech bubbles-amico 1.png"
+            alt="signup"
+          />
+        </div>
+        <div className="right-sec">
+          <div className="header-text text-cyan-700 font-bold text-3xl m-auto text-center mb-5 ">
+            Join With Our Community
           </div>
           <p className="sub-heading text-gray-400 text-sm text-center block mb-7 font-medium">
             Help you to contact everyone with just easy way
@@ -86,7 +90,7 @@ const Login = () => {
               </div>
               <div className="flex m-auto justify-center">
                 {errorMessage ? (
-                  <div className="alert  w-11/12 flex flex-col justify-center mb-4 text-white  bg-red-600 h-8">
+                  <div className="alert w-11/12 flex flex-col justify-center mb-4 text-white bg-red-600 h-8">
                     {errorMessage}
                   </div>
                 ) : (
@@ -150,7 +154,7 @@ const Login = () => {
               </div>
               <div className="flex m-auto justify-center">
                 <div className="w-11/12 mb-3">
-                  <label className=" text-gray-600">
+                  <label className="text-gray-600">
                     <input
                       type="checkbox"
                       checked={isChecked}
@@ -161,26 +165,24 @@ const Login = () => {
                   </label>
                 </div>
               </div>
-                <div className="flex m-auto justify-center">
-                  <div className="w-11/12 flex justify-center">
-                    {loading ? (
-                      <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3  font-medium hover:bg-white hover:text-cyan-800 ">
-                        <FaSpinner
-                          className="animate-spin w-6 h-6"
-                          disabled={!(formik.isValid && formik.dirty)}
-                        />
-                      </button>
-                    ) : (
-                      <button
-                        type="submit"
+              <div className="flex m-auto justify-center">
+                <div className="w-11/12 flex justify-center">
+                  {loading ? (
+                    <button className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 ">
+                      <FaSpinner
+                        className="animate-spin w-6 h-6"
                         disabled={!(formik.isValid && formik.dirty)}
-                        className="text-white bg-cyan-800 border-2 m-auto  border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
-                      >
-                        log in
-                      </button>
-                    )}
-                  </div>
-
+                      />
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={!(formik.isValid && formik.dirty)}
+                      className="text-white bg-cyan-800 border-2 m-auto border-cyan-800 border-solid rounded-md btn w-2/3 font-medium hover:bg-white hover:text-cyan-800 "
+                    >
+                      Log in
+                    </button>
+                  )}
                 </div>
               </div>
             </form>

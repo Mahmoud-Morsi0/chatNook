@@ -1,6 +1,5 @@
 import React from 'react'
 import { IoAddCircle } from "react-icons/io5";
-import { IoAddOutline } from "react-icons/io5";
 import Search from './Search';
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { GrNext } from "react-icons/gr";

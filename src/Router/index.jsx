@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
-import Login from '../pages/login/Login';
-import LandingPage from "../pages/landingPage";
-import Registration from '../pages/registration/Registration';
+import Login from '../pages/login/login';
+import LandingPage from "../pages/LandingPage/index";
+import Registration from '../pages/registration/registration';
 
 export default function Router() {
   return (

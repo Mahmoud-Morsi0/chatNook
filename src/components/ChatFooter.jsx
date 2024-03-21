@@ -41,6 +41,7 @@ const ChatFooter = ({ onSendMessage, message, setMessage }) => {
 
         <div className=" w-2/4">
           <textarea
+          
             className="w-full text-gray-900 border-gray-300 rounded-full min-h-1 bg-white text-sm textarea textarea-bordered focus:border-[#1e7887] bg "
             placeholder="Text your Message..."
             rows={1}

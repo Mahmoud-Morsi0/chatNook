@@ -163,8 +163,8 @@ export default function Home() {
       {/*Connection*/}
       <div
         className={` ${
-          connectionToggel ? "w-[363px]" : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-16 z-10 `}
+          connectionToggel ? "w-[346px]" : "w-0"
+        } transition-all bg-gray-100  absolute h-screen start-28 z-10 `}
       >
         <AllConnections
           ALL_USERS={allUsers}
@@ -175,7 +175,7 @@ export default function Home() {
       <div
         className={` ${
           groupToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-16 z-20 `}
+        } transition-all bg-gray-100  absolute h-screen start-28 z-20 `}
       >
         <Group handelChat={handelChat} allGroups={allGroups} />
       </div>
@@ -183,7 +183,7 @@ export default function Home() {
       <div
         className={` ${
           chatToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100 absolute h-screen start-16 z-30 `}
+        } transition-all bg-gray-100 absolute h-screen start-28 z-30 `}
       >
         <Chats
           handelChat={handelChat}
@@ -196,7 +196,7 @@ export default function Home() {
       {/* chat */}
       <div className="w-full flex justify-center ">
         <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
-          {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} />}
+          {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} handelChat={handelChat} allGroups={allGroups}/>}
         </div>
         <div className="md:w-9/12 sm:w-screen h-screen flex flex-col justify-between">
           {selectedChat ? (

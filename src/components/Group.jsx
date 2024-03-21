@@ -43,7 +43,7 @@ const Group = ({ handelChat, allGroups }) => {
           return (
             <div
               key={chat._id}
-              className="p-1 flex justify-center items-center cursor-pointer  "
+              className="p-1 flex  items-center cursor-pointer  "
               onClick={() => handelChat(chat)}
             >
               <div className=" messageage-container flex justify-between items-center h-10 p-5 mb-3 ">

@@ -10,8 +10,8 @@ import { useContext, useEffect } from "react";
 export default function Router() {
   let { setUserToken } = useContext(userContext);
   useEffect(() => {
-    if (localStorage.getItem("user") !== null) {
-      setUserToken(localStorage.getItem("user"));
+    if (localStorage.getItem("token")) {
+      setUserToken(localStorage.getItem("token"));
     }
   }, []);
   return (

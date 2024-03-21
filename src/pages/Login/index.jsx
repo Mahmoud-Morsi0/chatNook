@@ -39,7 +39,7 @@ const Login = () => {
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        setUserToken(response);
+        setUserToken(response.data.token);
         navigate("/home");
       }
     } catch (error) {

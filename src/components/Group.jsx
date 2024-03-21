@@ -44,7 +44,7 @@ const Group = ({ handelChat, allGroups }) => {
             <div
               key={chat._id}
               className="p-1 flex justify-center items-center cursor-pointer  "
-              onClick={() => handelChat(chat._id)}
+              onClick={() => handelChat(chat)}
             >
               <div className=" messageage-container flex justify-between items-center h-10 p-5 mb-3 ">
                 <div className="img-sec w-16 p-1">
@@ -59,7 +59,7 @@ const Group = ({ handelChat, allGroups }) => {
                     {chat.chatName}
                   </div>
                   <div className="text-gray-400 text-xs">
-                    {chat?.lastMessage || "write your first message!"}
+                    {chat?.lastMessage?.message || "write your first message!"}
                   </div>
                 </div>
               </div>

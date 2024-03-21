@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { useState } from "react";
 import { MdAttachFile } from "react-icons/md";
@@ -5,22 +6,22 @@ import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
 import EmojiPickerComponent from "./EmojiPickerComponent";
 
-const ChatFooter = () => {
-  const [message, setMessage] = useState("");
+const ChatFooter = ({ onSendMessage, message, setMessage }) => {
+  // const [message, setMessage] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const handleMessageChange = (newMessage) => {
-    setMessage(newMessage);
-  };
+  // const handleMessageChange = (newMessage) => {
+  //   setMessage(newMessage);
+  // };
 
   const toggleEmojiPicker = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
   const handleEmojiClick = (event) => {
-    console.log(event.emoji);
-    handleMessageChange(message + event.emoji);
-    setMessage(message + event.emoji);
+    // console.log(event.emoji);
+    // handleMessageChange(message + event.emoji);
+    setMessage((prevState) => prevState + event.emoji);
     // console.log(emojiObject.target);
   };
   return (
@@ -44,10 +45,13 @@ const ChatFooter = () => {
             placeholder="Text your Message..."
             rows={1}
             value={message}
-            onChange={(e) => handleMessageChange(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
-        <div className="ms-10 w-2/12 hover:text-orange-500 cursor-pointer  text-[#1e7887] text-2xl">
+        <div
+          onClick={onSendMessage}
+          className="ms-10 w-2/12 hover:text-orange-500 cursor-pointer  text-[#1e7887] text-2xl"
+        >
           <IoMdSend />
           {/*sender Icon */}
         </div>

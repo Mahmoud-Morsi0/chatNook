@@ -3,7 +3,8 @@ import { GrStatusGoodSmall } from "react-icons/gr";
 import { useState, useEffect } from "react";
 import DarkMode from "./DarkMode";
 
-const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
+const ChatHeader = ({ getUserProfile, CURRENT_USER, selectedChat }) => {
+  console.log({ selectedChat });
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -31,11 +32,11 @@ const ChatHeader = ({ getUserProfile, CURRENT_USER }) => {
       <div className=" w-36  flex justify-between align-middle">
         <div className="chat-image avatar ml-8 mr-4">
           <div className="w-10 rounded-full cursor-pointer">
-            <img src={CURRENT_USER.avatar} onClick={getUserProfile} />
+            <img src={selectedChat.chatPic} onClick={getUserProfile} />
           </div>
         </div>
         <div className=" ">
-          <div className=" font-semibold text-lg">{CURRENT_USER.userName}</div>
+          <div className=" font-semibold text-lg">{selectedChat.chatName}</div>
           <div className="text-sm ">
             <GrStatusGoodSmall className=" text-green-600 inline-block" />
             {CURRENT_USER.status}

@@ -6,7 +6,6 @@ const SignWithGmailBtn = () => {
   const navigate = useNavigate();
     const login = useGoogleLogin({
   onSuccess: (tokenResponse) => {
-    console.log(tokenResponse)
     localStorage.setItem("token", tokenResponse.access_token);
     console.log(tokenResponse.access_token)
     navigate("/home");

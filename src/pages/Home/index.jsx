@@ -11,8 +11,14 @@ import { GrGroup } from "react-icons/gr";
 import AllConnections from "./../../components/AllConnections";
 import Group from "../../components/Group";
 import Chats from "../../components/Chats";
-import { getAllUsers, getAllGroups } from "../../api/messages";
+import {
+  getAllUsers,
+  getAllGroups,
+  getAllMessages,
+  sendMessage,
+} from "../../api/messages";
 import Logo from "./../../components/Logo";
+import StartMessage from "../../components/StartMessage";
 
 export default function Home() {
   const date = new Date();
@@ -27,9 +33,16 @@ export default function Home() {
   const [chatToggel, setChatToggel] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
+  const [selectedChat, setSelectedChat] = useState();
+  const [allMessages, setAllMessages] = useState([]);
 
-  const handelChat = async (id) => {
-    console.log(id);
+  const handleChatMessages = async () => {
+    const { data } = await getAllMessages({
+      chatId: selectedChat._id,
+      recieverId: selectedChat.participants[0]._id,
+    });
+    setAllMessages(data);
+    console.log({ data });
   };
 
   const getAllUsersHandler = async () => {
@@ -42,6 +55,27 @@ export default function Home() {
     setAllGroups(data);
   };
 
+  const createNewMessageHandler = async () => {
+    const { data } = await sendMessage({
+      message,
+      chatId: selectedChat._id,
+      recieverId: selectedChat.participants[0]._id,
+    });
+    setMessage("");
+    handleChatMessages();
+    getAllGroupsHandler();
+  };
+
+  const handelChat = async (chat) => {
+    setSelectedChat(chat);
+  };
+
+  useEffect(() => {
+    if (selectedChat) {
+      handleChatMessages();
+    }
+  }, [selectedChat]);
+
   useEffect(() => {
     getAllUsersHandler();
     getAllGroupsHandler();
@@ -52,8 +86,8 @@ export default function Home() {
     setUserProfile(userProfile);
   };
 
-  const handelMessageChange = (e) => {
-    return setMessage(e.target.value);
+  const handelMessageChange = (body) => {
+    setMessage(body);
   };
 
   const onHover = () => {
@@ -88,6 +122,7 @@ export default function Home() {
 
   const createGroupHandler = async () => {
     handelGroupToggel();
+    getAllGroupsHandler();
   };
 
   return (
@@ -128,8 +163,8 @@ export default function Home() {
       {/*Connection*/}
       <div
         className={` ${
-          connectionToggel ? "w-[363px]" : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-[106px] z-10 `}
+          connectionToggel ? "w-[346px]" : "w-0"
+        } transition-all bg-gray-100  absolute h-screen start-28 z-10 `}
       >
         <AllConnections
           ALL_USERS={allUsers}
@@ -140,7 +175,7 @@ export default function Home() {
       <div
         className={` ${
           groupToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100  absolute h-screen start-[106px] z-20 `}
+        } transition-all bg-gray-100  absolute h-screen start-28 z-20 `}
       >
         <Group handelChat={handelChat} allGroups={allGroups} />
       </div>
@@ -148,7 +183,7 @@ export default function Home() {
       <div
         className={` ${
           chatToggel ? "w-[363px] " : "w-0"
-        } transition-all bg-gray-100 absolute h-screen start-[106px] z-30 `}
+        } transition-all bg-gray-100 absolute h-screen start-28 z-30 `}
       >
         <Chats
           handelChat={handelChat}
@@ -161,33 +196,43 @@ export default function Home() {
       {/* chat */}
       <div className="w-full flex justify-center ">
         <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
-          {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} />}
+          {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} handelChat={handelChat} allGroups={allGroups}/>}
         </div>
         <div className="md:w-9/12 sm:w-screen h-screen flex flex-col justify-between">
-          <div>
-            <ChatHeader
-              user={MESSAGE}
-              CURRENT_USER={CURRENT_USER}
-              getUserProfile={getUserProfile}
-            />
-          </div>
-          <div>
-            <div>
-              <ChatMessage
-                key={CURRENT_USER.userId}
-                CURRENT_USER={CURRENT_USER}
-                message={MESSAGE}
-                onHover={onHover}
-              />
+          {selectedChat ? (
+            <>
+              <div>
+                <ChatHeader
+                  user={MESSAGE}
+                  CURRENT_USER={CURRENT_USER}
+                  getUserProfile={getUserProfile}
+                  selectedChat={selectedChat}
+                />
+              </div>
+              <div className="flex-1 p-8">
+                <ChatMessage
+                  key={CURRENT_USER.userId}
+                  CURRENT_USER={CURRENT_USER}
+                  message={MESSAGE}
+                  onHover={onHover}
+                  selectedChat={selectedChat}
+                  allMessages={allMessages}
+                />
+              </div>
+              <div>
+                <ChatFooter
+                  key={message.userId}
+                  setMessage={handelMessageChange}
+                  message={message}
+                  onSendMessage={createNewMessageHandler}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="flex-1 flex justify-center items-center">
+              <StartMessage onClickButton={handelconnectionToggel} />
             </div>
-            <div>
-              <ChatFooter
-                key={message.userId}
-                handelMessageChange={handelMessageChange}
-                message={message}
-              />
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

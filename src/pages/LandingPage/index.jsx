@@ -3,12 +3,25 @@ import myImage from "../../assets/hero.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DarkMode from "./../../components/DarkMode";
+import { useContext } from "react";
+import { userContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const { userToken } = useContext(userContext);
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
+
+  useEffect(() => {
+    console.log({ userToken });
+    if (userToken) {
+      navigate("/home");
+    }
+  }, [userToken]);
 
   useEffect(() => {
     if (darkMode) {

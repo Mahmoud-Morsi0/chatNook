@@ -58,7 +58,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
   };
 
   return (
-    <div className="overflow-x-hidden shadow-sm h-screen">
+    <div className="overflow-x-hidden shadow-sm">
       <div className="flex flex-col justify-center bg items-center h-full ">
         <div className=" text-gray-500 w-full px-4 mb-2 ">
           <h1 className=" font-sans color font-bold mt-5 text-l ">Contacts</h1>

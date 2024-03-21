@@ -3,11 +3,11 @@ import axios from "./request";
 export const getAllUsers = () => {
   return axios.get("/contacts");
 };
-export const getAllMessages = (id) => {
-  return axios.get(`/messages/:${id}`);
+export const getAllMessages = (data) => {
+  return axios.post(`/message/get`, data);
 };
-export const sendMessage = (id) => {
-  return axios.post(`/messages/send/:${id}`);
+export const sendMessage = (data) => {
+  return axios.post(`/message/send`, data);
 };
 export const changeProfilePic = (id) => {
   return axios.patch("/user/changepic", id);

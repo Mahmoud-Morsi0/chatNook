@@ -4,6 +4,7 @@ import { IoCheckmarkDone } from "react-icons/io5";
 import StartMessage from "./StartMessage";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useEffect, useRef } from "react";
+import moment from 'moment';
 
 // import { RiDeleteBinLine } from "react-icons/ri";
 
@@ -97,7 +98,8 @@ const ChatMessage = (props) => {
                   </div>
                   {/* edit and delete section -- ACCEPT -- ABDALRAHMAN */}
                   {message.senderId === userId && handleTimeDifference(message.createdAt) ?
-                    <div className={`dropdown ${message.senderId === userId ? "dropdown-left" : "dropdown-right"}`}>
+                    <div className={`dropdown text-xs ${message.senderId === userId ? "dropdown-left" : "dropdown-right"}`}>
+                      {moment(message.createdAt).fromNow()}
                       <div tabIndex={0} role="button" className="btn m-1 rounded-full"><BsThreeDotsVertical />
                       </div>
                       <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-20">
@@ -107,7 +109,6 @@ const ChatMessage = (props) => {
                     </div>
 
                     :
-
                     <></>
                   }
 

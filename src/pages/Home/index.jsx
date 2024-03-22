@@ -114,11 +114,15 @@ export default function Home() {
     console.log('message 🈲🈵🈴㊗㊗㊙', message);
     setMessage('');
     handleChatMessages();
-
     getAllGroupsHandler();
   }
 
-  useEffect(() => { getAllMessages }, [allGroups])
+  useEffect(()=>{
+    handleChatMessages();
+    getAllGroupsHandler();
+  },[allGroups])
+
+  // useEffect(() => { getAllMessages }, [allGroups])
   useEffect(() => {
     socket?.on('sendMessage', (newMessage) => {
       if (newMessage.chatId === selectedChat._id) {
@@ -325,7 +329,7 @@ export default function Home() {
                   userId={userId}
                   handleMessageDelete={handleMessageDelete}
                   handleMessageUpdate={handleMessageUpdate}
-                  // handleSetUpdateMessage={handleSetUpdateMessage}
+                  handleSetUpdateMessage={handleSetUpdateMessage}
                 />
               </div>
               <div>

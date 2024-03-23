@@ -73,8 +73,8 @@ export default function Home() {
 
 
   useEffect(() => {
-    // setSocket(io("https://chat-backend-node-js-socket.onrender.com", {
-    setSocket(io("http://localhost:3600", {
+    setSocket(io("https://chat-backend-node-js-socket.onrender.com", {
+    // setSocket(io("http://localhost:3600", {
       withCredentials: true,
     }))
     console.log(socket);

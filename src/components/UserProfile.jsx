@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
 import { CiLogout } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { userContext } from "../context/UserContext";
 export default function UserProfile({ className }) {
-  let { setUserToken } = useContext(userContext);
+  //let { setUserToken } = useContext(userContext);
   const navigate = useNavigate();
   function logOut() {
     localStorage.removeItem("token");
-
-    setUserToken(null);
     navigate("/login");
   }
 

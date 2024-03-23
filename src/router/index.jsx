@@ -8,10 +8,11 @@ import ProductedRoute from "../ProductedRoute/ProductedRoute";
 import { useContext, useEffect } from "react";
 
 export default function Router() {
-  let { setUserToken } = useContext(userContext);
+  let { setUserToken, setUserId } = useContext(userContext);
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("token") && localStorage.getItem("id")) {
       setUserToken(localStorage.getItem("token"));
+      setUserId(localStorage.getItem("id"));
     }
   }, []);
   return (

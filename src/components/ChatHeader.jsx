@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import DarkMode from "./DarkMode";
 
 const ChatHeader = ({ getUserProfile, CURRENT_USER, selectedChat }) => {
-  console.log({ selectedChat });
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -29,7 +28,7 @@ const ChatHeader = ({ getUserProfile, CURRENT_USER, selectedChat }) => {
       id="header"
       style={headerStyle}
     >
-      <div className=" w-36  flex justify-between align-middle">
+      <div className=" min-w-36  flex justify-between align-middle">
         <div className="chat-image avatar ml-8 mr-4">
           <div className="w-10 rounded-full cursor-pointer">
             <img src={selectedChat.chatPic} onClick={getUserProfile} />

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { createGroup } from "../api/messages";
+import { FaSpinner } from "react-icons/fa";
 
-const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
+const AllConnections = ({ ALL_USERS, onCreateGroup, onCreateChat,handelChat,isLoading }) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchedUser, setSearchedUser] = useState("");
   const [chatName, setChatName] = useState("");
@@ -45,7 +46,7 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
       const data = {
         chatName,
         participants,
-        isGroup:true,
+        isGroup: true,
       };
       const response = await createGroup(data);
       onCreateGroup();
@@ -76,7 +77,9 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
             />
           </div>
         </div>
-        <div className="w-full h-[70vh] overflow-y-scroll">
+        <div className="w-full h-[60vh] overflow-y-scroll">
+        {!isLoading? <div className="flex justify-center"><FaSpinner className="animate-spin w-6 h-6 " /></div>:""}
+
           {filteredUsers &&
             filteredUsers.length > 0 &&
             filteredUsers.map((user) => {
@@ -85,11 +88,17 @@ const AllConnections = ({ ALL_USERS, onCreateGroup }) => {
                   key={user.id}
                   className="w-5/6 px-5 m-auto flex justify-between items-center mb-5 mt-2"
                 >
-                  <div className="avatar">
+                  <div
+                    className="avatar cursor-pointer"
+                    onClick={() => {
+                      onCreateChat(user)
+                      handelChat(user)
+                    }}
+                  >
                     <div className="w-10 rounded-full ring-2 ring-[#1E7887] ring-offset-gray-100 ">
                       <img src={user.profilePic} />
                     </div>
-                    <span className="text-gray ml-2 color text-gray-600 mt-2 ">
+                    <span className="text-gray ml-2 color text-gray-600 mt-2 min-w-44 ">
                       {user.fullName}
                     </span>
                   </div>

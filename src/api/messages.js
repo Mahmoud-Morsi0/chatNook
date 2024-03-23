@@ -9,6 +9,14 @@ export const getAllMessages = (data) => {
 export const sendMessage = (data) => {
   return axios.post(`/message/send`, data);
 };
+export const deleteMessage = (messageId) => {
+  // console.log('data in auth', data);
+  return axios.delete("/message/delete", {data: {messageId}});
+};
+export const updatingMessage = (messageId, message) => {
+  // console.log('data in auth', data);
+  return axios.patch("/message/update", {data: {messageId, message}});
+};
 export const changeProfilePic = (id) => {
   return axios.patch("/user/changepic", id);
 };

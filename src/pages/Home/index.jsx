@@ -2,7 +2,7 @@ import UserProfile from "../../components/UserProfile";
 import ChatFooter from "../../components/ChatFooter";
 import ChatMessage from "../../components/ChatMessage";
 import ChatHeader from "../../components/ChatHeader";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Message from "../../components/Message";
 import { MESSAGE, ALL_USERS } from "./mock";
 import { IoChatbubblesOutline } from "react-icons/io5";
@@ -14,13 +14,19 @@ import Chats from "../../components/Chats";
 import {
   getAllUsers,
   getAllGroups,
-  getAllMessages,
   sendMessage,
+  deleteMessage,
+  updatingMessage,
+  createGroup,
 } from "../../api/messages";
 import Logo from "./../../components/Logo";
 import StartMessage from "../../components/StartMessage";
+import io from "socket.io-client";
+import { userContext } from "../../context/UserContext";
+
 
 export default function Home() {
+  let { userId } = useContext(userContext);
   const date = new Date();
   const datetext = date.getHours() + ":" + date.getMinutes();
   console.log(datetext);
@@ -35,38 +41,78 @@ export default function Home() {
   const [allGroups, setAllGroups] = useState([]);
   const [selectedChat, setSelectedChat] = useState();
   const [allMessages, setAllMessages] = useState([]);
+  const [updateMessageId, setUpdateMessageId] = useState("");
+  const [socket, setSocket] = useState(null);
+  const [isLoading,setIsLoading]=useState(false)
+  useEffect(() => {
+    setSocket(
+      io("https://chat-backend-node-js-socket.onrender.com", {
+        withCredentials: true,
+      })
+    );
+  }, []);
 
   const handleChatMessages = async () => {
-    const { data } = await getAllMessages({
-      chatId: selectedChat._id,
-      recieverId: selectedChat.participants[0]._id,
+    if (!selectedChat) {
+      return;
+    }
+    const { data } = await sendMessage({
+      chatId: selectedChat?._id,
+      recieverId: selectedChat?.participants[0]?._id,
     });
+    console.log({ dataFromBE: data });
     setAllMessages(data);
-    console.log({ data });
+    
   };
 
   const getAllUsersHandler = async () => {
+    setIsLoading(true)
     const { data } = await getAllUsers();
     setAllUsers(data);
+    setIsLoading(false)
   };
 
   const getAllGroupsHandler = async () => {
+    setIsLoading(true)
     const { data } = await getAllGroups();
     setAllGroups(data);
+    setIsLoading(false)
   };
 
   const createNewMessageHandler = async () => {
-    const { data } = await sendMessage({
-      message,
+    if (!selectedChat || !message.trim()) return;
+
+    socket.emit("sendMessage", {
+      message: message,
       chatId: selectedChat._id,
-      recieverId: selectedChat.participants[0]._id,
+      recieverId: selectedChat?.participants[0]?._id,
+      userId,
     });
+
     setMessage("");
     handleChatMessages();
     getAllGroupsHandler();
   };
 
-  const handelChat = async (chat) => {
+  useEffect(() => {
+    handleChatMessages();
+    getAllGroupsHandler();
+  }, [allGroups]);
+
+  // useEffect(() => { getAllMessages }, [allGroups])
+  useEffect(() => {
+    socket?.on("sendMessage", (newMessage) => {
+      if (newMessage.chatId === selectedChat._id) {
+        setAllMessages((prevMessages) => [...prevMessages, newMessage]);
+      }
+    });
+
+    return () => {
+      socket?.off("sendMessage");
+    };
+  }, [selectedChat]);
+
+  const handelChat = (chat) => {
     setSelectedChat(chat);
   };
 
@@ -90,6 +136,35 @@ export default function Home() {
     setMessage(body);
   };
 
+  const handleMessageDelete = async (data) => {
+    try {
+      const response = await deleteMessage(data);
+      console.log(response);
+      handleChatMessages();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleMessageUpdate = async () => {
+    try {
+      const response = await updatingMessage(updateMessageId, message);
+      console.log(response);
+      if (response) {
+        setMessage(""); //empty message field
+      }
+      handleChatMessages(); // show messages in chat box
+      setUpdateMessageId(""); //remove message id so i can create new message
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSetUpdateMessage = (message, messageId) => {
+    setMessage(message);
+    setUpdateMessageId(messageId);
+  };
+
   const onHover = () => {
     setHover(!hover);
   };
@@ -111,6 +186,25 @@ export default function Home() {
     setconnectionToggel(false);
     setGroupToggel(false);
     setChatToggel(!chatToggel);
+  };
+
+  const createChatHandler = async (user) => {
+    try {
+      const data = {
+        chatName: user.fullName,
+        userId: user.id,
+        chatPic: user.profilePic,
+        isGroup: false,
+      };
+      const response = await createGroup(data);
+      console.log({ response });
+      handelGroupToggel();
+      // handelChat(user);
+      setSelectedChat(response.chat);
+      console.log(`created private chat with ${user.fullName} `);
+    } catch (e) {
+      console.log({ e });
+    }
   };
 
   const CURRENT_USER = {
@@ -154,8 +248,11 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <div className="avatar online mt-8 mb-2">
-            <div className="w-10 rounded-full">
-              <img src="https://docs.material-tailwind.com/img/face-1.jpg" />
+            <div
+             className="w-10 rounded-full curosal-pointer ">
+              <img
+              onClick={getUserProfile}
+               src="https://i.ibb.co/xhbZ5fQ/download.png"/>
             </div>
           </div>
         </div>
@@ -169,6 +266,9 @@ export default function Home() {
         <AllConnections
           ALL_USERS={allUsers}
           onCreateGroup={createGroupHandler}
+          onCreateChat={createChatHandler}
+          handelChat={handelChat}
+          isLoading={isLoading}
         />
       </div>
       {/*Groups*/}
@@ -177,10 +277,14 @@ export default function Home() {
           groupToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100  absolute h-screen start-28 z-20 `}
       >
-        <Group handelChat={handelChat} allGroups={allGroups} />
+        <Group
+         handelChat={handelChat}
+          allGroups={allGroups}
+          isLoading={isLoading} 
+          />
       </div>
       {/*Chats */}
-      <div
+      {/* <div
         className={` ${
           chatToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100 absolute h-screen start-28 z-30 `}
@@ -191,12 +295,21 @@ export default function Home() {
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
-      </div>
+      </div> */}
 
       {/* chat */}
       <div className="w-full flex justify-center ">
         <div className="md:w-3/12 h-screen max-sm:hidden max-md:w-2/12 md:inline-block">
-          {userProfile ? <UserProfile /> : <Message ALL_USERS={ALL_USERS} handelChat={handelChat} allGroups={allGroups}/>}
+          {userProfile ? (
+            <UserProfile />
+          ) : (
+            <Message
+              ALL_USERS={ALL_USERS}
+              handelChat={handelChat}
+              allGroups={allGroups}
+              isLoading={isLoading}
+            />
+          )}
         </div>
         <div className="md:w-9/12 sm:w-screen h-screen flex flex-col justify-between">
           {selectedChat ? (
@@ -209,7 +322,7 @@ export default function Home() {
                   selectedChat={selectedChat}
                 />
               </div>
-              <div className="flex-1 p-8">
+              <div className="flex-1 p-2 px-2 h-4/6">
                 <ChatMessage
                   key={CURRENT_USER.userId}
                   CURRENT_USER={CURRENT_USER}
@@ -217,6 +330,10 @@ export default function Home() {
                   onHover={onHover}
                   selectedChat={selectedChat}
                   allMessages={allMessages}
+                  userId={userId}
+                  handleMessageDelete={handleMessageDelete}
+                  handleMessageUpdate={handleMessageUpdate}
+                  handleSetUpdateMessage={handleSetUpdateMessage}
                 />
               </div>
               <div>
@@ -225,6 +342,8 @@ export default function Home() {
                   setMessage={handelMessageChange}
                   message={message}
                   onSendMessage={createNewMessageHandler}
+                  updateMessageId={updateMessageId}
+                  handleMessageUpdate={handleMessageUpdate}
                 />
               </div>
             </>
@@ -238,3 +357,14 @@ export default function Home() {
     </div>
   );
 }
+// useEffect(() => {
+//   socket.on("sendMessage", (newMessage) => {
+//     if (newMessage.chatId === selectedChat._id) {
+//       setAllMessages((prevMessages) => [...prevMessages, newMessage]);
+//     }
+//   });
+
+//   return () => {
+//     socket.off("chat message");
+//   };
+// }, [selectedChat]);

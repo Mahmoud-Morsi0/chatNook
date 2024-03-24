@@ -10,7 +10,9 @@ import { loginSchemaValidation } from "../../schema/loginValidation";
 import { userContext } from "../../context/UserContext";
 
 const Login = () => {
-  const { setUserToken } = useContext(userContext);
+  const { setUserToken, setUserId, setUserEmail, setUserName } =
+    useContext(userContext);
+
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,8 +40,16 @@ const Login = () => {
       const response = await login(values);
 
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token);
-        setUserToken(response.data.token);
+        const userData = response.data;
+        localStorage.setItem("token", userData.token);
+        localStorage.setItem("id", userData.id);
+        localStorage.setItem("userEmail", userData.email);
+        localStorage.setItem("userName", response.data.fullName);
+        console.log(response.data.fullName);
+        setUserToken(userData.token);
+        setUserId(userData.id);
+        setUserEmail(userData.email);
+        setUserName(response.data.fullName);
         navigate("/home");
       }
     } catch (error) {

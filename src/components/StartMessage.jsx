@@ -4,7 +4,7 @@ import myImage from "../assets/Group Chat-amico 1.png";
 export default function StartMessage({ showButton = true, onClickButton }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-10">
+      <div className="flex flex-col items-center justify-center gap-2">
         <h2 className="text-gray-500 font-medium text-xl">
           No message selected yet
         </h2>

@@ -2,19 +2,11 @@
 // import { useEffect, useState } from "react";
 // import { FaUserPen } from "react-icons/fa6";
 
-const Group = ({ handelChat, allGroups }) => {
-  //   console.log({ allGroups });
-  //   const [searchedUser, setSearchedGroup] = useState("");
-  //   useEffect(() => {
-  //     if (searchedUser) {
-  //       const _filteredUsers = allGroups.filter((user) =>
-  //         user.fullName.toLowerCase().includes(searchedUser.toLowerCase())
-  //       );
-  //       setSearchedGroup(_filteredUsers);
-  //     } else {
-  //       setSearchedGroup(allGroups);
-  //     }
-  //   }, [searchedUser]);
+import { FaSpinner } from "react-icons/fa";
+
+const Group = ({ handelChat, allGroups,isLoading }) => {
+  
+
   return (
     <div className="container flex flex-col justify-start items-center bg h-screen overflow-hidden ">
       <div className="w-full flex justify-between items-center pe-7 p-3 ">
@@ -31,14 +23,13 @@ const Group = ({ handelChat, allGroups }) => {
           id="search"
           placeholder=" Search... "
           className=" rounded-full my-2 py-1 pl-4 pr-20 bg text-[#1e7881] focus:outline-none focus:ring-1 focus:ring-[#1e7881] border sm:text-sm sm:leading-6 bg-gray-300 "
-          //   onChange={(e) => searchedUser(e.target.value)}
-          //   value={searchedUser}
-          // onChange={handelSearch}
-          // value={searchValue}
         />
       </div>
 
-      <div className="overflow-y-scroll h-fit p-1 sm:h-screen">
+      <div className="overflow-y-scroll  h-fit p-1 sm:h-screen">
+        {!isLoading? <div className="flex justify-center"><FaSpinner className="animate-spin w-6 h-6 " /></div>:""}
+       
+        
         {allGroups.map((chat) => {
           return (
             <div

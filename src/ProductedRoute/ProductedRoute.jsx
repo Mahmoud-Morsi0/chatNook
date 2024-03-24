@@ -2,11 +2,9 @@
 
 import { Navigate } from "react-router-dom";
 export default function ProductedRoute({ children }) {
-  if (localStorage.getItem("token")) {
-    console.log("okay");
-    return children; // Render the protected component
+  if (localStorage.getItem("token") !== null) {
+    return children;
   } else {
-    console.log("not okay");
-    return <Navigate to="/login" />; // Redirect to the login page
+    return <Navigate to="/login" />;
   }
 }

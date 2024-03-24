@@ -248,8 +248,11 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <div className="avatar online mt-8 mb-2">
-            <div className="w-10 rounded-full">
-              <img src="https://docs.material-tailwind.com/img/face-1.jpg" />
+            <div
+             className="w-10 rounded-full curosal-pointer ">
+              <img
+              onClick={getUserProfile}
+               src="https://i.ibb.co/xhbZ5fQ/download.png"/>
             </div>
           </div>
         </div>
@@ -281,7 +284,7 @@ export default function Home() {
           />
       </div>
       {/*Chats */}
-      <div
+      {/* <div
         className={` ${
           chatToggel ? "w-[363px] " : "w-0"
         } transition-all bg-gray-100 absolute h-screen start-28 z-30 `}
@@ -292,7 +295,7 @@ export default function Home() {
           searchValue={searchValue}
           ALL_USERS={ALL_USERS}
         />
-      </div>
+      </div> */}
 
       {/* chat */}
       <div className="w-full flex justify-center ">

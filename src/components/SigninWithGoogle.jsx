@@ -8,6 +8,8 @@ const SignWithGmailBtn = () => {
   onSuccess: (tokenResponse) => {
     localStorage.setItem("token", tokenResponse.access_token);
     console.log(tokenResponse.access_token)
+    console.log(tokenResponse)
+
     navigate("/home");
   },
 });

@@ -189,7 +189,7 @@ const ChatMessage = (props) => {
                           : " text-orange-400"
                       } `}
                     >
-                      {message.name}
+                      {message.userName}
                     </div>
                     <div className="text-sm :">{message.message}</div>
                   </div>

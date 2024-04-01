@@ -201,6 +201,12 @@ export default function Home() {
         }
         return group;
       }));
+
+      socket?.on('deleteMessage', ({ messageId }) => {
+        // Remove the deleted message from state
+        console.log("socket delete message <<<>>>", messageId);
+        setAllMessages(prevMessages => prevMessages.filter(message => message._id !== messageId));
+      });
     });
 
 
@@ -266,8 +272,10 @@ export default function Home() {
   // delete specific message when click in the first 15 mins
   const handleMessageDelete = async (data) => {
     try {
-      const response = await deleteMessage(data);
-      console.log(response);
+      console.log('deleting message=>>><<<', data);
+      // const response = await deleteMessage(data);
+      // console.log(response);
+      socket.emit('deleteMessage', data )
       handleChatMessages()
       getAllGroupsHandler()
     } catch (error) {

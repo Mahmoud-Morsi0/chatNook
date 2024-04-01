@@ -40,6 +40,7 @@ const Login = () => {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("id", response.data.id);
+        localStorage.setItem("user", JSON.stringify(response.data));
         //let id = response.data.id;
         setUserToken(response.data.token);
         setUserId(response.data.id);
@@ -66,9 +67,9 @@ const Login = () => {
   });
 
   return (
-    <section className="py-14">
-      <div className="xl:grid xl:grid-cols-2 gap-4 lg:grid lg:grid-cols-1">
-        <div className="left-sec flex  justify-center  flex-col items-center">
+    <section className="py-14 h-screen">
+      <div className="xl:grid  gap-4 lg:grid grid-cols-2">
+        <div className="left-sec  flex flex-col items-center">
           <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <img
             className="w-4/6"

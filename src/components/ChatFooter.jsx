@@ -6,22 +6,24 @@ import { SlPicture } from "react-icons/sl";
 import { IoMdSend } from "react-icons/io";
 import EmojiPickerComponent from "./EmojiPickerComponent";
 
-const ChatFooter = ({ onSendMessage, message, setMessage ,updateMessageId, handleMessageUpdate }) => {
-  // const [message, setMessage] = useState("");
+const ChatFooter = ({ createNewMessageHandler,handelMessageChange, message, setMessage, updateMessageId, handleMessageUpdate }) => {
   console.log(updateMessageId);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [currentMessage, setCurrentMessage] = useState(false);
 
-  // const handleMessageChange = (newMessage) => {
-  //   setMessage(newMessage);
-  // };
+  console.log('Chat footer rerender !!!!! 🚧');
+
+  const sendCurrentMessage = () => {
+    createNewMessageHandler(currentMessage)
+    setCurrentMessage("")
+  }
+
 
   const toggleEmojiPicker = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
   const handleEmojiClick = (event) => {
-    // console.log(event.emoji);
-    // handleMessageChange(message + event.emoji);
     setMessage((prevState) => prevState + event.emoji);
     // console.log(emojiObject.target);
   };
@@ -34,27 +36,44 @@ const ChatFooter = ({ onSendMessage, message, setMessage ,updateMessageId, handl
             onClick={toggleEmojiPicker}
           />
           {/*Emoj Icon */}
-          <MdAttachFile className="cursor-pointer  hover:text-orange-500" />
+          {/* <MdAttachFile className="cursor-pointer  hover:text-orange-500" /> */}
           {/*file Icon */}
-          <SlPicture className=" cursor-pointer  hover:text-orange-500 " />
+          {/* <SlPicture className=" cursor-pointer  hover:text-orange-500 " /> */}
           {/*pic Icon */}
         </div>
 
         <div className=" w-2/4">
+
+
+
+          {/* <input
+            className="w-full text-gray-900 border-gray-300 rounded-full min-h-1 bg-white text-sm textarea textarea-bordered focus:border-[#1e7887] bg "
+            placeholder="Text your Message..."
+            rows={1}
+            value={currentMessage}
+            onChange={(e) => setCurrentMessage(e.target.value)}
+            onKeyPress={(e) => {
+              e.key == "Enter" && sendCurrentMessage();
+            }}
+          ></input> */}
+          
           <input      
             className="w-full text-gray-900 border-gray-300 rounded-full min-h-1 bg-white text-sm textarea textarea-bordered focus:border-[#1e7887] bg "
             placeholder="Text your Message..."
             rows={1}
             value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            onChange={(e) => handelMessageChange(e.target.value)}
             onKeyPress={(e) => {
-              e.key == "Enter" && onSendMessage();
+              e.key == "Enter" && createNewMessageHandler();
             }}
           ></input>
+
+
+
         </div>
         <div
-          // onClick={onSendMessage}
-          onClick={updateMessageId? handleMessageUpdate: onSendMessage}
+          // onClick={createNewMessageHandler}
+          onClick={updateMessageId ? handleMessageUpdate : createNewMessageHandler}
           className="ms-10 w-2/12 hover:text-orange-500 cursor-pointer  text-[#1e7887] text-2xl"
         >
           <IoMdSend />

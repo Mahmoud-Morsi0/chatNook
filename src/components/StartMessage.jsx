@@ -2,6 +2,9 @@
 import myImage from "../assets/Group Chat-amico 1.png";
 
 export default function StartMessage({ showButton = true, onClickButton }) {
+ 
+  console.log('Start message rerender !!!!! 🚧');
+
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-10">

@@ -2,6 +2,8 @@
 
 const Message = ({ handelChat, allGroups }) => {
       
+  console.log('Messages old chats rerender !!!!! 🚧');
+
     return (
       <div className="container flex flex-col justify-start items-center bg h-screen overflow-hidden ">
         <div className="w-full flex justify-between items-center pe-7 p-3 ">
@@ -18,14 +20,14 @@ const Message = ({ handelChat, allGroups }) => {
             return (
               <div
                 key={chat._id}
-                className="p-1 flex  items-center cursor-pointer  "
+                className="p-2 my-1 flex items-center cursor-pointer"
                 onClick={() => handelChat(chat)}
               >
-                <div className=" messageage-container flex justify-between items-center h-10 p-5 mb-3 ">
-                  <div className="img-sec w-16 p-1">
+                <div className=" messageage-container flex justify-between items-center h-10 mb-3 ">
+                  <div className="img-sec w-16 me-1 p-1">
                     <img
                       src={chat.chatPic}
-                      className={` ring ring-success rounded-full w-10 hover:${""}`}
+                      className={`ring ring-success rounded-full min-h-10 w-10 h-10 min-w-10 hover:${""}`}
                       alt=""
                     />
                   </div>
